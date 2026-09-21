@@ -216,13 +216,13 @@ img {
    ========================================================= */
 
 .navbar {
+    background: var(--surface);
 
-    background:
-        var(--surface);
-
-    position: sticky;
+    position: fixed;
 
     top: 0;
+    left: 0;
+    width: 100%;
 
     z-index: 1000;
 
@@ -239,7 +239,6 @@ img {
         border-color 0.3s ease;
 }
 
-
 .nav-inner {
 
     min-height: 82px;
@@ -254,6 +253,20 @@ img {
 }
 
 
+@media (max-width: 768px) {
+
+    .top-bar {
+        display: none;
+    }
+
+    .navbar {
+        top: 0;
+    }
+
+    body {
+        padding-top: 82px;
+    }
+}
 /* =========================================================
    LOGO
    ========================================================= */

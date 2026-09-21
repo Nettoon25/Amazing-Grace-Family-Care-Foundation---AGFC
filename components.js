@@ -65,32 +65,6 @@ function renderHeader() {
         <header class="main-header">
 
 
-            <!-- TOP BAR -->
-
-            <div class="top-bar">
-
-                <div class="container top-bar-inner">
-
-                    <div class="top-info">
-
-                        <span>
-                            📍 ${churchInfo.location}
-                        </span>
-
-                        <span>
-                            ⛪ Welcome to our church
-                        </span>
-
-                    </div>
-
-
-                    <div class="top-contact">
-
-                        <a href="tel:${churchInfo.phone}">
-                            ${churchInfo.phone}
-                        </a>
-
-                    </div>
 
                 </div>
 
