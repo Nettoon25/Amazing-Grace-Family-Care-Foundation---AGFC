@@ -153,9 +153,7 @@ function renderHeader() {
                             Sermons
                         </a>
 
-                        <a href="events.html">
-                            Events
-                        </a>
+                <a href="community-outreach.html">Community Outreach</a>
 
                         <a href="gallery.html">
                             Gallery
