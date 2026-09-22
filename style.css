@@ -1200,6 +1200,7 @@ span:nth-child(3) {
 }
 
 
+
 .welcome-image img {
 
     width: 100%;
@@ -4953,3 +4954,155 @@ h6 {
     }
 
 }
+
+.section-label,
+.church-cta > .container .cta-content > span {
+    font-family: var(--font-body);
+}
+
+/* =========================================================
+   AGFC — GLOBAL TYPOGRAPHY CONSISTENCY
+   Matches the visual language established on index.html
+   ========================================================= */
+
+/* Body / paragraph text */
+body,
+p,
+li,
+a,
+button,
+input,
+textarea,
+select {
+    font-family: var(--font-body);
+}
+
+/* Main page and section headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-body);
+}
+
+/* Section labels */
+.section-label,
+.page-hero-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+/* CTA label */
+.church-cta .cta-content > span {
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+/* Keep heading hierarchy clear */
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+/* About page cards */
+.mission-card h3,
+.belief-item h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+.about-intro-content p {
+    color: #a8b2c1;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+/* =========================================================
+   ABOUT PAGE — MATCH HOMEPAGE VISUAL HIERARCHY
+   ========================================================= */
+
+/* Bright yellow section labels
+   Matches WELCOME TO AGFC / OUR FOCUS on index.html */
+.about-intro .section-label,
+.mission-section .section-label,
+.story-section .section-label,
+.beliefs-section .section-label {
+    color: var(--agfc-yellow);
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+/* Keep the same bright yellow treatment if the label
+   is displayed in another theme */
+[data-theme="dark"] .about-intro .section-label,
+[data-theme="dark"] .mission-section .section-label,
+[data-theme="dark"] .story-section .section-label,
+[data-theme="dark"] .beliefs-section .section-label,
+.dark-theme .about-intro .section-label,
+.dark-theme .mission-section .section-label,
+.dark-theme .story-section .section-label,
+.dark-theme .beliefs-section .section-label {
+    color: var(--agfc-yellow);
+}
+
+
+/* =========================================================
+   ABOUT PAGE PARAGRAPHS
+   Match the paragraph color used on index.html
+   ========================================================= */
+
+.about-intro-content p,
+.story-content p {
+    color: var(--muted);
+    font-family: var(--font-body);
+}
+
+
+/* =========================================================
+   WHAT WE DO — MAIN HEADING
+   "Caring For Our Community"
+   ========================================================= */
+
+.story-section .story-content h2 {
+    color: #ffffff;
+    font-family: var(--font-body);
+}
+
+.story-section .story-content h2 span {
+    color: #ffffff;
+}
+
+.about-intro-content h2,
+.about-intro-content h2 span {
+    color: #ffffff;
+}
+
+/* FIND US — fully white heading in both themes */
+.about-intro .section-heading h2,
+.about-intro .section-heading h2 span {
+    color: #ffffff !important;
+}
+
+/* =========================================================
+   ABOUT PAGE — MATCH WELCOME SECTION PARAGRAPH COLOR
+   ========================================================= */
+
+.about-intro-content p,
+.story-content p {
+    color: inherit;
+}
+
