@@ -831,3 +831,38 @@ document.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   APPLE-STYLE IMAGE REVEAL ON SCROLL
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const images = document.querySelectorAll(".scroll-image");
+
+    const imageObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+
+                    // Run only once
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    images.forEach(image => {
+        imageObserver.observe(image);
+    });
+
+});
