@@ -73,38 +73,43 @@ function renderHeader() {
 
 
             <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-            <nav class="navbar">
+<nav class="navbar">
 
-                <div class="container nav-inner">
-
-
-                    <!-- LOGO -->
-
-                    <a
-                        href="index.html"
-                        class="church-logo"
-                    >
-
-                        <div class="logo-symbol">
-                            ✝
-                        </div>
+    <div class="container nav-inner">
 
 
-                        <div class="logo-text">
+        <!-- LOGO -->
 
-                            <strong>
-                                ${churchInfo.shortName}
-                            </strong>
+        <a
+            href="index.html"
+            class="church-logo"
+        >
 
-                            <span>
-                                Faith • Hope • Love
-                            </span>
+            <div class="logo-symbol">
 
-                        </div>
+                <img
+                    src="logo.jpg"
+                    alt="Amazing Grace Family Care Foundation logo"
+                >
 
-                    </a>
+            </div>
 
+
+            <div class="logo-text">
+
+                <strong>
+                    ${churchInfo.shortName}
+                </strong>
+
+                <span>
+                    Faith • Hope • Love
+                </span>
+
+            </div>
+
+        </a>
 
 
                     <!-- DESKTOP NAVIGATION -->
@@ -120,7 +125,7 @@ function renderHeader() {
                         </a>
 
                         <a href="ministries.html">
-                            Ministries
+                         The AGFC Family
                         </a>
 
                         <a href="sermons.html">
