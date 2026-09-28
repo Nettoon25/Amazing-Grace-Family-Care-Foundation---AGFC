@@ -359,4 +359,181 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
+
+        /* YOUR EXISTING WEBSITE JAVASCRIPT */
+
+
+        /* =================================================
+           ESCAPE KEY
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Escape") {
+
+                    const navigation =
+                        document.getElementById(
+                            "mainNavigation"
+                        );
+
+                    const menuButton =
+                        document.getElementById(
+                            "mobileMenuButton"
+                        );
+
+
+                    if (navigation) {
+
+                        navigation.classList.remove(
+                            "mobile-open"
+                        );
+
+                    }
+
+
+                    if (menuButton) {
+
+                        menuButton.classList.remove(
+                            "open"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           SERMON VIDEO PLAYERS
+        ================================================= */
+
+        const sermonCards =
+            document.querySelectorAll(
+                ".sermon-card"
+            );
+
+
+        sermonCards.forEach(card => {
+
+            const imageArea =
+                card.querySelector(
+                    ".sermon-card-image"
+                );
+
+            const thumbnail =
+                card.querySelector(
+                    ".sermon-thumbnail"
+                );
+
+            const playButton =
+                card.querySelector(
+                    ".sermon-play"
+                );
+
+            const video =
+                card.querySelector(
+                    ".sermon-video-player"
+                );
+
+
+            if (
+                !imageArea ||
+                !thumbnail ||
+                !playButton ||
+                !video
+            ) {
+                return;
+            }
+
+
+            function startVideo() {
+
+                sermonCards.forEach(
+                    otherCard => {
+
+                        if (
+                            otherCard !== card
+                        ) {
+
+                            const otherImage =
+                                otherCard.querySelector(
+                                    ".sermon-card-image"
+                                );
+
+                            const otherVideo =
+                                otherCard.querySelector(
+                                    ".sermon-video-player"
+                                );
+
+
+                            if (otherVideo) {
+
+                                otherVideo.pause();
+
+                                otherVideo.currentTime = 0;
+
+                            }
+
+
+                            if (otherImage) {
+
+                                otherImage.classList.remove(
+                                    "video-active"
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+
+                imageArea.classList.add(
+                    "video-active"
+                );
+
+
+                video.play().catch(
+                    error => {
+
+                        console.log(
+                            "Video could not autoplay:",
+                            error
+                        );
+
+                    }
+                );
+
+            }
+
+
+            playButton.addEventListener(
+                "click",
+                startVideo
+            );
+
+
+            thumbnail.addEventListener(
+                "click",
+                startVideo
+            );
+
+        });
+
+
+    }
+);
