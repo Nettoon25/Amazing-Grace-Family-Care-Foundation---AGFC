@@ -56,6 +56,10 @@
 
     /* LIGHT MODE TEXT FOR MAGENTA SECTIONS */
     --agfc-light-text: rgba(255, 255, 255, 0.82);
+
+        --paragraph-color: #f3f4f6;
+
+        --paragraph-color: rgba(255, 255, 255, 0.88);
 }
 
 
@@ -95,6 +99,10 @@
 
     --shadow-lg:
         0 20px 50px rgba(0, 0, 0, 0.45);
+
+         --paragraph-color: #f3f4f6;
+
+         --paragraph-color: rgba(255, 255, 255, 0.88);
 }
 
 
@@ -2184,6 +2192,8 @@ span:nth-child(3) {
 }
 
 
+
+
 .sermon-grid {
 
     display:
@@ -2685,6 +2695,7 @@ span:nth-child(3) {
     line-height:
         1.8;
 }
+
 
 
 /* =========================================================
@@ -5105,4 +5116,48 @@ h6 {
 .story-content p {
     color: inherit;
 }
+/* =========================================
+   GALLERY HEADING COLORS
+========================================= */
 
+/* PHOTO GALLERY - BOTH MODES */
+.gallery-photo-label {
+    color: #ffd400 !important;
+}
+
+/* IMAGES - BOTH MODES */
+.gallery-images-title {
+    color: #ffffff !important;
+}
+
+
+/* =========================================
+   VIDEO GALLERY
+========================================= */
+
+/* LIGHT MODE */
+.gallery-video-label {
+    color: #0f62fe !important;
+}
+
+/* DARK MODE */
+[data-theme="dark"] .gallery-video-label,
+.dark-theme .gallery-video-label {
+    color: #ffd400 !important;
+}
+
+
+/* =========================================
+   VIDEOS TITLE
+========================================= */
+
+/* LIGHT MODE */
+.gallery-videos-title {
+    color: #000000 !important;
+}
+
+/* DARK MODE */
+[data-theme="dark"] .gallery-videos-title,
+.dark-theme .gallery-videos-title {
+    color: #ffffff !important;
+}
