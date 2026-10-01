@@ -13,7 +13,7 @@
 :root {
 
     --primary: #0f62fe;
-    --primary-dark: #0b1220;
+    --primary-dark:  #050a12;
     --primary-deep: #0043ce;
 
     --accent: #f97316;
@@ -34,7 +34,7 @@
 
     --border: #e4e7ec;
 
-    --footer: #0b1220;
+    --footer: #050a12;
 
     --success: #16803c;
     --danger: #dc2626;
@@ -62,7 +62,6 @@
         --paragraph-color: rgba(255, 255, 255, 0.88);
 }
 
-
 /* =========================================================
    DARK THEME
    ========================================================= */
@@ -71,7 +70,7 @@
 .dark-theme {
 
     --primary: #4d8dff;
-    --primary-dark: #050a13;
+    --primary-dark:#000000;
     --primary-deep: #2f6fe4;
 
     --accent: #ff8a3d;
@@ -87,12 +86,14 @@
     --background: #8D0F7B;
 
     /* OTHER SECTIONS */
-    --surface: #101722;
-    --surface-alt: #111e31;
+    --surface: #000000;
+    --surface-alt:#000000;
 
     --border: #202b3b;
 
-    --footer: #050a12;
+    /* PURE BLACK HEADER AND FOOTER */
+    --header: #000000;
+    --footer: #000000;
 
     --shadow:
         0 10px 35px rgba(0, 0, 0, 0.35);
@@ -100,12 +101,8 @@
     --shadow-lg:
         0 20px 50px rgba(0, 0, 0, 0.45);
 
-         --paragraph-color: #f3f4f6;
-
-         --paragraph-color: rgba(255, 255, 255, 0.88);
+    --paragraph-color: rgba(255, 255, 255, 0.88);
 }
-
-
 
 
 /* =========================================================
