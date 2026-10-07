@@ -273,82 +273,61 @@ img {
     gap: 30px;
 }
 
-
-/* =========================================================
-   LOGO
-   ========================================================= */
+/* =========================
+   CHURCH LOGO / NAVIGATION
+========================= */
 
 .church-logo {
-
     display: flex;
-
     align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    gap: 12px;
-
+/* Logo image */
+.logo-symbol {
+    width: 54px;
+    height: 54px;
     flex-shrink: 0;
 }
 
-.logo-symbol {
-    width: 9rem;
-    height: 4rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-}
-
 .logo-symbol img {
-    display: block;
-
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0%;
+}
 
+/* Logo text */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* AGFC */
+.logo-text strong {
     margin: 0;
     padding: 0;
-
-    object-fit: contain;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0;
 }
 
-.logo-text {
-
-    display: flex;
-
-    flex-direction: column;
-
-    line-height: 1.15;
-}
-
-
-.logo-text strong {
-
-    color:
-        var(--primary);
-
-    font-size: 17px;
-
-    letter-spacing: 0.5px;
-}
 
 
 .logo-text span {
-
-    color:
-        var(--muted);
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
 }
-
-
 /* =========================================================
    DESKTOP NAV
    ========================================================= */
@@ -5500,4 +5479,43 @@ margin-top: 5rem;
 margin-top: 5rem;
 
 
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.social-links img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    filter: brightness(0) invert(1);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.social-links a:hover {
+    background: transparent;
+    transform: translateY(-2px);
+}
+
+.social-links a:hover img {
+    transform: scale(1.12);
+    opacity: 0.85;
 }
