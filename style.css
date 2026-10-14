@@ -1152,6 +1152,14 @@ span:nth-child(3) {
     margin-bottom: 15px;
 }
 
+.section-heading h2
+{
+color:black;
+
+}
+
+
+
 
 .section-heading p,
 .welcome-content p,
@@ -2928,21 +2936,6 @@ margin-top: 5rem;
    GALLERY MEDIA
    ========================================================= */
 
-.gallery-media-section {
-
-    padding:
-        90px 0;
-
-    background:
-       green;
-}
-
-
-.gallery-media-section.videos-section {
-
-    background:
-        var(--surface-alt);
-}
 
 
 .media-section-heading {
@@ -5583,21 +5576,21 @@ margin-top: 5rem;
     --footer-border: #202B3B;
 
     /* Welcome section */
-    --welcome-bg: #210D27;
+    --welcome-bg:#8D0F7B;
     --welcome-heading: #FFFFFF;
     --welcome-text: #E5D9E8;
     --welcome-label: #FDE047;
     --welcome-link: #FDE047;
 
     /* Ministries preview section */
-    --ministries-bg: #210D27;
+    --ministries-bg: black;
     --ministries-heading: #FFFFFF;
     --ministries-text: #E5D9E8;
     --ministries-label: #FDE047;
 
     /* Ministry cards */
     --ministry-card-bg: #111827;
-    --ministry-card-border: #334155;
+    --ministry-card-border: #2a2d2f;
     --ministry-card-heading: #F8FAFC;
     --ministry-card-text: #CBD5E1;
     --ministry-card-label: #FFAD70;
@@ -5713,7 +5706,12 @@ margin-top: 5rem;
    --------------------------------------------------------- */
 
 .ministries-preview {
-    background: var(--ministries-bg);
+background-color: #F4F7FA;
+}
+
+[data-theme="dark"] .ministries-preview,
+.dark-theme .ministries-preview {
+    background-color:#000000;
 }
 
 .ministries-preview .section-heading h2 {
@@ -5795,4 +5793,211 @@ margin-top: 5rem;
         color 0.3s ease,
         border-color 0.3s ease,
         box-shadow 0.3s ease;
+}
+/* =========================================
+   GALLERY SECTIONS — LIGHT MODE
+========================================= */
+
+.gallery-media-section {
+    padding: 90px 0;
+    background-color: #F4F7FA;
+}
+
+.gallery-media-section .container {
+    background-color: transparent;
+}
+
+.media-section-heading-1 {
+    background-color: transparent;
+}
+
+.gallery-media-section .image-gallery {
+    background-color: transparent;
+}
+
+
+/* =========================================
+   VIDEO GALLERY — LIGHT MODE
+========================================= */
+
+.gallery-media-section-2 {
+    padding: 90px 0;
+       background-color: #8D0F7B;
+}
+
+.gallery-media-section-2 .container {
+    background-color: transparent;
+}
+
+.gallery-media-section-2 .media-section-heading {
+    background-color: transparent;
+}
+
+.gallery-media-section-2 .image-gallery {
+    background-color: transparent;
+}
+
+
+/* =========================================
+   GALLERY SECTIONS — DARK MODE
+========================================= */
+
+[data-theme="dark"] .gallery-media-section,
+.dark-theme .gallery-media-section {
+    background-color:#000000;
+}
+
+[data-theme="dark"] .gallery-media-section .container,
+.dark-theme .gallery-media-section .container {
+    background-color: transparent;
+}
+
+[data-theme="dark"] .media-section-heading-1,
+.dark-theme .media-section-heading-1 {
+    background-color: transparent;
+}
+
+[data-theme="dark"] .gallery-media-section .image-gallery,
+.dark-theme .gallery-media-section .image-gallery {
+    background-color: transparent;
+}
+
+
+/* =========================================
+   VIDEO GALLERY — DARK MODE
+========================================= */
+
+[data-theme="dark"] .gallery-media-section-2,
+.dark-theme .gallery-media-section-2 {
+    background-color: #8D0F7B;
+}
+
+[data-theme="dark"] .gallery-media-section-2 .container,
+.dark-theme .gallery-media-section-2 .container {
+    background-color: transparent;
+}
+
+[data-theme="dark"] .gallery-media-section-2 .media-section-heading,
+.dark-theme .gallery-media-section-2 .media-section-heading {
+    background-color: transparent;
+}
+
+[data-theme="dark"] .gallery-media-section-2 .image-gallery,
+.dark-theme .gallery-media-section-2 .image-gallery {
+    background-color: transparent;
+}
+
+/* ABOUT INTRO — FULL VIEWPORT WIDTH */
+.about-intro {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 90px 0;
+    box-sizing: border-box;
+}
+
+/* EXPAND THE INNER CONTAINER */
+.about-intro > .container.about-intro-grid {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 5%;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+}
+
+/* ALLOW CONTENT TO USE ITS FULL GRID COLUMN */
+.about-intro-content {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* MAKE THE IMAGE COLUMN EXPAND TOO */
+.about-intro .story-image,
+.about-intro .about-intro-image {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+.about-intro .story-image img,
+.about-intro .about-intro-image img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .about-intro {
+        padding: 60px 0;
+    }
+
+    .about-intro > .container.about-intro-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+        padding: 0 5%;
+    }
+}
+
+
+
+/* =========================================
+   SECTION HEADING — LIGHT AND DARK MODES
+   ========================================= */
+
+/* LIGHT MODE: black text */
+:root:not([data-theme="dark"]):not(.dark-theme)
+.section-heading .section-label,
+:root:not([data-theme="dark"]):not(.dark-theme)
+.section-heading h2,
+:root:not([data-theme="dark"]):not(.dark-theme)
+.section-heading p {
+    color: #000000 !important;
+}
+
+/* DARK MODE: white text */
+[data-theme="dark"] .section-heading .section-label,
+[data-theme="dark"] .section-heading h2,
+[data-theme="dark"] .section-heading p,
+.dark-theme .section-heading .section-label,
+.dark-theme .section-heading h2,
+.dark-theme .section-heading p {
+    color: #ffffff !important;
+}
+
+
+
+[data-theme="dark"] .contact-info .section-label,
+.dark-theme .contact-info .section-label {
+color: #fb923c;
+}
+
+
+
+/* Logo text — same color in light and dark mode */
+.logo-text strong {
+    color: #8D0F7B !important;
+    font-style: normal;
+}
+
+.logo-text span {
+   color:blue;
+    font-style: normal;
+}
+
+
+
+[data-theme="dark"] .logo-text span,
+.dark-theme .logo-text span {
+color: #fb923c;
 }
