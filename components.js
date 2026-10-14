@@ -614,35 +614,48 @@ function renderFooter() {
 
 
                     <div class="social-links">
-
-                        <a
-                            href="${churchInfo.facebook}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Facebook"
-                        >
-                            f
-                        </a>
-
-
-                        <a
-                            href="${churchInfo.instagram}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                        >
-                            ◎
-                        </a>
+   <!-- Facebook -->
+    <a
+        href="${churchInfo.facebook}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+    >
+        <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+            alt="Facebook"
+        />
+    </a>
 
 
-                        <a
-                            href="${churchInfo.youtube}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="YouTube"
-                        >
-                            ▶
-                        </a>
+
+                 <!-- Instagram -->
+    <a
+        href="${churchInfo.instagram}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+    >
+        <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+            alt="Instagram"
+        />
+    </a>
+
+
+  <!-- YouTube -->
+    <a
+        href="${churchInfo.youtube}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+    >
+        <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+            alt="YouTube"
+        />
+    </a>
+
 
                     </div>
 
