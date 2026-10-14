@@ -22,7 +22,7 @@
     --white: #ffffff;
     --black: #000000;
 
-    --text: #172033;
+    --text: black;
     --muted: #667085;
 
     /* MAIN PAGE BACKGROUND */
@@ -71,7 +71,7 @@
 
     --primary: #4d8dff;
     --primary-dark:#000000;
-    --primary-deep: #2f6fe4;
+    --primary-deep: #0043ce;
 
     --accent: #ff8a3d;
     --accent-light: #ffad70;
@@ -123,10 +123,7 @@ html {
 
 body {
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+   
 
     color: var(--text);
 
@@ -976,8 +973,9 @@ span:nth-child(3) {
 
     display: inline-block;
 
-    color:
-        var(--accent-light);
+    color:white;
+
+            font-family:Georgia,serif;
 
     font-size: 12px;
 
@@ -1066,7 +1064,7 @@ span:nth-child(3) {
 .hero-btn.primary {
 
     background:
-        var(--primary);
+         var(--accent);
 
     color:
         #ffffff;
@@ -1087,7 +1085,7 @@ span:nth-child(3) {
 .hero-btn.secondary {
 
     background:
-        transparent;
+        #ffffff;
 
     border:
         1px solid
@@ -1406,6 +1404,8 @@ span:nth-child(3) {
 
     color:
         var(--accent);
+        
+            font-family:Georgia, serif;
 
     font-size: 10px;
 
@@ -1417,17 +1417,21 @@ span:nth-child(3) {
 
 .ministry-content h3 {
 
-    color:
-        var(--primary);
+    color:black;
 
-    font-family:
-        Georgia,
-        serif;
+    font-family: Georgia,serif;
 
     font-size: 24px;
 
     margin:
         7px 0;
+}
+
+
+.dark-theme .ministry-content h3 
+{
+  color: white;
+    
 }
 
 
@@ -4602,24 +4606,7 @@ h6 {
    MINISTRY CARDS
 --------------------------------------------------------- */
 
-.ministry-content h3 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
 
-.ministry-content p {
-    font-family: var(--font-body);
-    font-weight: 400;
-    line-height: 1.75;
-}
-
-.ministry-content > span {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
 
 
 /* ---------------------------------------------------------
@@ -4769,6 +4756,11 @@ h6 {
 
 .site-footer {
     font-family: var(--font-body);
+
+}
+
+.dark-theme .site-footer{
+background-color: #000000;
 }
 
 .footer-logo strong {
@@ -5518,4 +5510,289 @@ margin-top: 5rem;
 .social-links a:hover img {
     transform: scale(1.12);
     opacity: 0.85;
+}
+
+
+
+
+
+/* =========================================================
+   CUSTOM SECTION COLOURS — LIGHT & DARK MODE
+   Add this block at the END of your existing stylesheet.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. LIGHT MODE COLOURS
+   --------------------------------------------------------- */
+
+:root {
+    /* Footer — matches the header's --surface background */
+    --footer-bg: var(--surface);
+    --footer-text: var(--text);
+    --footer-heading: var(--text);
+    --footer-link: var(--text);
+    --footer-link-hover: var(--accent);
+    --footer-border: var(--border);
+
+    /* Welcome section */
+    --welcome-bg: #8D0F7B;
+    --welcome-heading: #FFFFFF;
+    --welcome-text: rgba(255, 255, 255, 0.88);
+    --welcome-label: #FACC15;
+    --welcome-link: #FACC15;
+
+    /* Ministries preview section */
+    --ministries-bg: #8D0F7B;
+    --ministries-heading: #FFFFFF;
+    --ministries-text: rgba(255, 255, 255, 0.88);
+    --ministries-label: #FACC15;
+
+    /* Ministry cards */
+    --ministry-card-bg: #FFFFFF;
+    --ministry-card-border: #E4E7EC;
+    --ministry-card-heading: #101828;
+    --ministry-card-text: #667085;
+    --ministry-card-label: #F97316;
+    --ministry-card-link: #0F62FE;
+    --ministry-card-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+    /* Ministry category label typography */
+    --ministry-label-font: Georgia, serif;
+    --ministry-label-size: 10px;
+    --ministry-label-weight: 700;
+    --ministry-label-style: normal;
+    --ministry-label-spacing: 2px;
+    --ministry-label-transform: uppercase;
+}
+
+
+/* ---------------------------------------------------------
+   2. DARK MODE COLOURS
+   Supports both theme conventions in your stylesheet:
+   data-theme="dark" and .dark-theme
+   --------------------------------------------------------- */
+
+[data-theme="dark"],
+.dark-theme {
+    /* Footer — matches the header's --surface background */
+    --footer-bg: var(--surface);
+    --footer-text: #F1F5F9;
+    --footer-heading: #FFFFFF;
+    --footer-link: #E2E8F0;
+    --footer-link-hover: #FFAD70;
+    --footer-border: #202B3B;
+
+    /* Welcome section */
+    --welcome-bg: #210D27;
+    --welcome-heading: #FFFFFF;
+    --welcome-text: #E5D9E8;
+    --welcome-label: #FDE047;
+    --welcome-link: #FDE047;
+
+    /* Ministries preview section */
+    --ministries-bg: #210D27;
+    --ministries-heading: #FFFFFF;
+    --ministries-text: #E5D9E8;
+    --ministries-label: #FDE047;
+
+    /* Ministry cards */
+    --ministry-card-bg: #111827;
+    --ministry-card-border: #334155;
+    --ministry-card-heading: #F8FAFC;
+    --ministry-card-text: #CBD5E1;
+    --ministry-card-label: #FFAD70;
+    --ministry-card-link: #93B4FF;
+    --ministry-card-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---------------------------------------------------------
+   3. FOOTER
+   Background matches the header/navbar background.
+   --------------------------------------------------------- */
+
+.site-footer {
+    background: var(--footer-bg) !important;
+    color: var(--footer-text) !important;
+    border-top: 1px solid var(--footer-border);
+}
+
+.site-footer h3,
+.site-footer h4,
+.site-footer .footer-title,
+.site-footer .footer-column-title,
+.site-footer .footer-logo strong,
+.site-footer .service-item strong {
+    color: var(--footer-heading) !important;
+}
+
+.site-footer p,
+.site-footer span,
+.site-footer li,
+.site-footer .footer-bottom,
+.site-footer .footer-about p,
+.site-footer .service-item span {
+    color: var(--footer-text);
+}
+
+.site-footer a {
+    color: var(--footer-link);
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: var(--footer-link-hover);
+}
+
+.site-footer .footer-logo span {
+    color: var(--footer-link-hover);
+}
+
+.site-footer .social-links a {
+    color: var(--footer-text);
+}
+
+.site-footer .footer-bottom {
+    border-top-color: var(--footer-border);
+}
+
+
+/* ---------------------------------------------------------
+   4. WELCOME SECTION
+   --------------------------------------------------------- */
+
+.welcome-section {
+    background: var(--welcome-bg);
+}
+
+.welcome-section .welcome-content h2,
+.welcome-section .welcome-content h2 span {
+    color: var(--welcome-heading) !important;
+}
+
+.welcome-section .welcome-content p {
+    color: var(--welcome-text) !important;
+}
+
+.welcome-section .section-label {
+    color: var(--welcome-label) !important;
+}
+
+.welcome-section .text-link,
+.welcome-section .text-link:hover {
+    color: var(--welcome-link) !important;
+}
+
+
+/* ---------------------------------------------------------
+   5. WELCOME GRID
+   .welcome-grid is the existing grid class.
+   --------------------------------------------------------- */
+
+.welcome-grid {
+    background: transparent;
+}
+
+.container.welcome-grid,
+.container .welcome-grid {
+    color: var(--welcome-text);
+}
+
+.welcome-grid .welcome-content h2,
+.welcome-grid .welcome-content h2 span {
+    color: var(--welcome-heading) !important;
+}
+
+.welcome-grid .welcome-content p {
+    color: var(--welcome-text) !important;
+}
+
+
+/* ---------------------------------------------------------
+   6. MINISTRIES PREVIEW SECTION
+   --------------------------------------------------------- */
+
+.ministries-preview {
+    background: var(--ministries-bg);
+}
+
+.ministries-preview .section-heading h2 {
+    color: var(--ministries-heading) !important;
+}
+
+.ministries-preview .section-heading p {
+    color: var(--ministries-text) !important;
+}
+
+.ministries-preview .section-label {
+    color: var(--ministries-label) !important;
+}
+
+
+/* ---------------------------------------------------------
+   7. MINISTRY CARDS
+   --------------------------------------------------------- */
+
+.ministry-card {
+    background: var(--ministry-card-bg) !important;
+    border-color: var(--ministry-card-border) !important;
+    box-shadow: var(--ministry-card-shadow);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ministry-card:hover {
+    box-shadow: var(--ministry-card-shadow);
+}
+
+.ministry-content h3,
+.ministry-card .ministry-content h3 {
+    color: var(--ministry-card-heading) !important;
+}
+
+.ministry-content p {
+    color: var(--ministry-card-text) !important;
+}
+
+.ministry-content a {
+    color: var(--ministry-card-link) !important;
+}
+
+.ministry-content a:hover {
+    color: var(--ministry-card-label) !important;
+}
+
+
+/* ---------------------------------------------------------
+   8. MINISTRY CATEGORY LABEL
+   Controls colour, font style and typography independently.
+   --------------------------------------------------------- */
+
+.ministry-content > span {
+    color: var(--ministry-card-label) !important;
+    font-family: var(--ministry-label-font) !important;
+    font-size: var(--ministry-label-size) !important;
+    font-weight: var(--ministry-label-weight) !important;
+    font-style: var(--ministry-label-style) !important;
+    letter-spacing: var(--ministry-label-spacing) !important;
+    text-transform: var(--ministry-label-transform);
+}
+
+
+/* ---------------------------------------------------------
+   9. SMOOTH THEME TRANSITIONS
+   --------------------------------------------------------- */
+
+.site-footer,
+.welcome-section,
+.ministries-preview,
+.ministry-card {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
