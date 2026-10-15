@@ -6299,3 +6299,107 @@ body.lightbox-open {
         margin-bottom: 42px;
     }
 }
+
+
+/* About intro paragraph — white in both themes */
+.about-intro-content .site-paragraph {
+    color: #FFFFFF !important;
+}
+
+
+
+/* Mission Statement — white in both themes */
+.story-content .site-paragraph {
+    color: #FFFFFF !important;
+}
+
+
+
+/* Founder name — white in both themes */
+.story-content h3 {
+    color: yellow !important;
+}
+
+
+/* Source of Revenue heading — white in both themes */
+.about-intro .story-content h2 {
+    color: #FFFFFF !important;
+}
+
+
+
+/* Faith, Hope & Love — heading and paragraphs white */
+h2:has(+ .site-paragraph),
+h2:has(+ p.site-paragraph) {
+    color: #FFFFFF !important;
+}
+
+.site-paragraph {
+    color: #FFFFFF !important;
+}
+
+
+
+
+/* ABOUT INTRO — H2 SPAN: ORANGE IN BOTH THEMES */
+html body .about-intro .about-intro-content h2 span {
+    color: #FB923C !important;
+}
+
+/* Support dark mode */
+html[data-theme="dark"] body .about-intro .about-intro-content h2 span,
+html.dark-theme body .about-intro .about-intro-content h2 span,
+body.dark-theme .about-intro .about-intro-content h2 span {
+    color: #FB923C !important;
+}
+
+
+
+/* ABOUT INTRO — PARAGRAPHS WHITE IN BOTH THEMES */
+.about-intro-content p {
+    color: #FFFFFF !important;
+}
+
+
+/* SERMON CARD — SPAN COLORS */
+
+
+/* Light mode: Blue */
+.sermon-card-content span,
+.sermon-card-content span {
+    font-style: normal;
+}
+
+/* Light mode: Blue */
+html:not([data-theme="dark"]) .sermon-card-content span,
+body:not(.dark-theme) .sermon-card-content span {
+    color: blue !important;
+}
+
+/* Dark mode: Yellow */
+html[data-theme="dark"] .sermon-card-content span,
+html.dark-theme .sermon-card-content span,
+body.dark-theme .sermon-card-content span {
+    color: #FFFF00 !important;
+}
+
+
+/* SERMON CARD — VIEW MESSAGE LINK */
+
+/* Light mode: Blue */
+html:not([data-theme="dark"]) .sermon-card-content a {
+    color: #2563EB !important;
+}
+
+/* Dark mode: Orange */
+html[data-theme="dark"] .sermon-card-content a,
+html.dark-theme .sermon-card-content a,
+body.dark-theme .sermon-card-content a {
+    color: #FB923C !important;
+}
+
+
+/* STORY SECTION — PARAGRAPHS WHITE IN BOTH THEMES */
+.story-content p {
+    color: #FFFFFF !important;
+}
