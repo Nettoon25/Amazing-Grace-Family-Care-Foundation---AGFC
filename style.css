@@ -1360,7 +1360,7 @@ color:black;
 .ministry-card {
 
     background:
-        var(--surface);
+        gainsboro;
 
     border-radius:
         12px;
@@ -5541,7 +5541,7 @@ margin-top: 5rem;
     --ministries-label: #FACC15;
 
     /* Ministry cards */
-    --ministry-card-bg: #FFFFFF;
+    --ministry-card-bg: #E5D9E8;
     --ministry-card-border: #E4E7EC;
     --ministry-card-heading: #101828;
     --ministry-card-text: #667085;
@@ -5589,7 +5589,7 @@ margin-top: 5rem;
     --ministries-label: #FDE047;
 
     /* Ministry cards */
-    --ministry-card-bg: #111827;
+    --ministry-card-bg:  #2a2d2f;
     --ministry-card-border: #2a2d2f;
     --ministry-card-heading: #F8FAFC;
     --ministry-card-text: #CBD5E1;
@@ -6128,4 +6128,174 @@ body.dark-theme .media-section-heading .section-label.gallery-photo-label {
     margin-bottom: 24px; /* Vertical spacing between objectives */
     line-height: 1.8;
 
+}
+
+
+
+/* =====================================
+   IMAGE LIGHTBOX MODAL
+===================================== */
+
+.image-gallery .gallery-image img {
+    cursor: zoom-in;
+}
+
+/* Modal background */
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.image-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Image and caption container */
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 12px;
+}
+
+.lightbox-content img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 150px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-caption {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
+.lightbox-counter {
+    color: #d1d5db;
+    font-size: 13px;
+}
+
+/* Close button */
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 26px;
+    z-index: 2;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: #dc2626;
+    transform: rotate(90deg);
+}
+
+/* Previous and next buttons */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 58px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background 0.2s ease;
+}
+
+.lightbox-arrow:hover {
+    background: #2563eb;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+/* Keep page from scrolling behind the modal */
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .image-lightbox {
+        padding: 60px 12px;
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: calc(100vh - 170px);
+    }
+
+    .lightbox-close {
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .lightbox-arrow {
+        top: auto;
+        bottom: 16px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        transform: none;
+    }
+
+    .lightbox-prev {
+        left: calc(50% - 54px);
+    }
+
+    .lightbox-next {
+        right: calc(50% - 54px);
+    }
+
+    .lightbox-caption {
+        margin-bottom: 48px;
+    }
+
+    .lightbox-counter {
+        margin-bottom: 42px;
+    }
 }
