@@ -6403,3 +6403,26 @@ body.dark-theme .sermon-card-content a {
 .story-content p {
     color: #FFFFFF !important;
 }
+
+
+
+/* FOOTER QUICK LINKS — HORIZONTAL FLEX WITH WRAPPING */
+.footer-column:has(> a[href="index.html"]) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+}
+
+/* Keep the heading on its own full-width line */
+.footer-column:has(> a[href="index.html"]) h3 {
+    flex: 0 0 100%;
+    margin-bottom: 8px;
+}
+
+/* Style the individual links */
+.footer-column:has(> a[href="index.html"]) a {
+    display: inline-block;
+    margin: 0;
+}
