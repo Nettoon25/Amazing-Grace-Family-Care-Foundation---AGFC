@@ -816,10 +816,6 @@ function renderFooter() {
                     </p>
 
 
-                    <p>
-                        Built with faith & purpose.
-                    </p>
-
                 </div>
 
             </div>

@@ -5952,52 +5952,180 @@ background-color: #F4F7FA;
 
 
 /* =========================================
-   SECTION HEADING — LIGHT AND DARK MODES
+   1. GENERAL SECTION LABEL
    ========================================= */
 
-/* LIGHT MODE: black text */
-:root:not([data-theme="dark"]):not(.dark-theme)
-.section-heading .section-label,
-:root:not([data-theme="dark"]):not(.dark-theme)
-.section-heading h2,
-:root:not([data-theme="dark"]):not(.dark-theme)
+/* Light mode */
+.section-heading .section-label {
+    color: blue !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .section-heading .section-label,
+body[data-theme="dark"] .section-heading .section-label,
+html.dark-theme .section-heading .section-label,
+body.dark-theme .section-heading .section-label {
+    color: #FB923C !important;
+}
+
+
+/* =========================================
+   2. GENERAL SECTION HEADING — H2
+   ========================================= */
+
+/* Light mode */
+.section-heading h2 {
+    color: #000000 !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .section-heading h2,
+body[data-theme="dark"] .section-heading h2,
+html.dark-theme .section-heading h2,
+body.dark-theme .section-heading h2 {
+    color: #FFFFFF !important;
+}
+
+
+/* =========================================
+   3. GENERAL SECTION DESCRIPTION
+   ========================================= */
+
+/* Light mode */
 .section-heading p {
     color: #000000 !important;
 }
 
-/* DARK MODE: white text */
-[data-theme="dark"] .section-heading .section-label,
-[data-theme="dark"] .section-heading h2,
-[data-theme="dark"] .section-heading p,
-.dark-theme .section-heading .section-label,
-.dark-theme .section-heading h2,
-.dark-theme .section-heading p {
-    color: #ffffff !important;
+/* Dark mode */
+html[data-theme="dark"] .section-heading p,
+body[data-theme="dark"] .section-heading p,
+html.dark-theme .section-heading p,
+body.dark-theme .section-heading p {
+    color: #FFFFFF !important;
 }
 
 
+/* =========================================
+   4. LOGO NAME
+   ========================================= */
 
-[data-theme="dark"] .contact-info .section-label,
-.dark-theme .contact-info .section-label {
-color: #fb923c;
-}
-
-
-
-/* Logo text — same color in light and dark mode */
 .logo-text strong {
     color: #8D0F7B !important;
     font-style: normal;
 }
 
+
+/* =========================================
+   5. LOGO TAGLINE
+   ========================================= */
+
+/* Light mode */
 .logo-text span {
-   color:blue;
+    color: blue !important;
     font-style: normal;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .logo-text span,
+body[data-theme="dark"] .logo-text span,
+html.dark-theme .logo-text span,
+body.dark-theme .logo-text span {
+    color: #FB923C !important;
+}
+
+
+/* =========================================
+   6. CONTACT FORM SECTION LABEL
+   ========================================= */
+
+/* Light mode */
+.contact-form-wrapper .section-label {
+    color: #FB923C !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .contact-form-wrapper .section-label,
+body[data-theme="dark"] .contact-form-wrapper .section-label,
+html.dark-theme .contact-form-wrapper .section-label,
+body.dark-theme .contact-form-wrapper .section-label {
+    color: #FB923C !important;
+}
+
+
+/* =========================================
+   7. MINISTRIES SECTION — H2
+   ========================================= */
+
+/* Light mode */
+.ministries-preview .section-heading h2 {
+    color: #000000 !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .ministries-preview .section-heading h2,
+body[data-theme="dark"] .ministries-preview .section-heading h2,
+html.dark-theme .ministries-preview .section-heading h2,
+body.dark-theme .ministries-preview .section-heading h2 {
+    color: #FFFFFF !important;
+}
+
+
+/* =========================================
+   8. MINISTRIES SECTION — PARAGRAPH
+   ========================================= */
+
+/* Light mode */
+.ministries-preview .section-heading p {
+    color: #000000 !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .ministries-preview .section-heading p,
+body[data-theme="dark"] .ministries-preview .section-heading p,
+html.dark-theme .ministries-preview .section-heading p,
+body.dark-theme .ministries-preview .section-heading p {
+    color: #FFFFFF !important;
 }
 
 
 
-[data-theme="dark"] .logo-text span,
-.dark-theme .logo-text span {
-color: #fb923c;
+/* =========================================
+   PHOTO GALLERY LABEL
+   ========================================= */
+
+/* Light mode: Blue */
+.media-section-heading-1 .section-label.gallery-photo-label {
+    color: blue !important;
+}
+
+/* Dark mode: Orange */
+html[data-theme="dark"] .media-section-heading-1 .section-label.gallery-photo-label,
+body[data-theme="dark"] .media-section-heading-1 .section-label.gallery-photo-label,
+html.dark-theme .media-section-heading-1 .section-label.gallery-photo-label,
+body.dark-theme .media-section-heading-1 .section-label.gallery-photo-label {
+    color: #FB923C !important;
+}
+
+
+/* =========================================
+   VIDEO GALLERY LABEL
+   ========================================= */
+
+/* Light and dark modes: Orange */
+.media-section-heading .section-label.gallery-photo-label,
+html[data-theme="dark"] .media-section-heading .section-label.gallery-photo-label,
+body[data-theme="dark"] .media-section-heading .section-label.gallery-photo-label,
+html.dark-theme .media-section-heading .section-label.gallery-photo-label,
+body.dark-theme .media-section-heading .section-label.gallery-photo-label {
+    color: #FB923C !important;
+}
+
+
+
+.objectives-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 24px; /* Vertical spacing between objectives */
+    line-height: 1.8;
+
 }
