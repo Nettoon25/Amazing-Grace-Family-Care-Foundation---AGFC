@@ -36,17 +36,17 @@ html.dark-theme #agcf-give-modal,
 body.dark-theme #agcf-give-modal,
 html.dark-mode #agcf-give-modal,
 body.dark-mode #agcf-give-modal {
-  --agcf-modal-bg:black;
+  --agcf-modal-bg: #151923;
   --agcf-modal-surface: #202633;
   --agcf-modal-text: #f8fafc;
   --agcf-modal-muted: #b6c0d0;
   --agcf-modal-border: #3a4353;
   --agcf-modal-field-bg: #202633;
-  --agcf-modal-accent: grey;
-  --agcf-modal-accent-hover:grey;
+  --agcf-modal-accent: #FB923C;
+  --agcf-modal-accent-hover: #f97316;
   --agcf-modal-accent-soft: #3a2b20;
-  --agcf-modal-accent-border: grey;
-  --agcf-modal-focus: grey;
+  --agcf-modal-accent-border: #9a5b2c;
+  --agcf-modal-focus: #fdba74;
   --agcf-modal-status-bg: #30271f;
   --agcf-modal-status-text: #fed7aa;
   --agcf-modal-error: #fda29b;
@@ -92,56 +92,3 @@ body.dark-mode #agcf-give-modal {
 body.agcf-modal-open { overflow:hidden; }
 @media(max-width:520px) { #agcf-give-modal { padding:10px; align-items:flex-end; } #agcf-give-modal .agcf-modal-panel { max-height:94vh; border-radius:18px 18px 10px 10px; } #agcf-give-modal .agcf-modal-head,#agcf-give-modal .agcf-modal-body { padding-left:17px; padding-right:17px; } #agcf-give-modal .agcf-form-grid { grid-template-columns:1fr; } #agcf-give-modal .agcf-amount-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(prefers-reduced-motion:no-preference) { #agcf-give-modal .agcf-modal-panel { animation:agcf-modal-in .18s ease-out; } @keyframes agcf-modal-in { from { opacity:0; transform:translateY(10px) scale(.99); } to { opacity:1; transform:translateY(0) scale(1); } } }
-
-/* Expandable payment-method details (frontend demo) */
-#agcf-give-modal .agcf-method-fieldset { display:grid; gap:8px; }
-#agcf-give-modal .agcf-method-panel { padding:14px; margin:0 0 8px; border:1px solid var(--agcf-modal-accent-border); border-radius:12px; background:var(--agcf-modal-accent-soft); }
-#agcf-give-modal .agcf-method-panel[hidden] { display:none !important; }
-#agcf-give-modal .agcf-method-panel label { margin-top:8px; }
-#agcf-give-modal .agcf-method-panel label:first-child { margin-top:0; }
-#agcf-give-modal .agcf-field-hint { margin:7px 0 0; color:var(--agcf-modal-muted); font-size:.82rem; }
-#agcf-give-modal .agcf-demo-warning { padding:10px 12px; margin-bottom:12px; border:1px solid var(--agcf-modal-accent-border); border-radius:9px; color:var(--agcf-modal-text); font-size:.83rem; }
-#agcf-give-modal .agcf-demo-warning strong { color:var(--agcf-modal-accent); }
-#agcf-give-modal .agcf-card-grid { margin-top:4px; }
-#agcf-give-modal .agcf-payment-choice { margin-bottom:0; }
-
-
-
-/* Thin scrollbar for the donation modal */
-.give-modal-content {
-    scrollbar-width: thin;
-    scrollbar-color: #2563eb transparent;
-}
-
-/* Chrome, Edge and Safari */
-.give-modal-content::-webkit-scrollbar {
-    width: 5px;
-}
-
-.give-modal-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.give-modal-content::-webkit-scrollbar-thumb {
-    background-color: #2563eb;
-    border-radius: 10px;
-}
-
-/* Dark mode */
-html[data-theme="dark"] .give-modal-content,
-body[data-theme="dark"] .give-modal-content,
-html.dark-theme .give-modal-content,
-body.dark-theme .give-modal-content,
-html.dark-mode .give-modal-content,
-body.dark-mode .give-modal-content {
-    scrollbar-color: #FB923C transparent;
-}
-
-html[data-theme="dark"] .give-modal-content::-webkit-scrollbar-thumb,
-body[data-theme="dark"] .give-modal-content::-webkit-scrollbar-thumb,
-html.dark-theme .give-modal-content::-webkit-scrollbar-thumb,
-body.dark-theme .give-modal-content::-webkit-scrollbar-thumb,
-html.dark-mode .give-modal-content::-webkit-scrollbar-thumb,
-body.dark-mode .give-modal-content::-webkit-scrollbar-thumb {
-    background-color: #FB923C;
-}

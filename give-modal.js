@@ -1,6 +1,5 @@
 /* AGCF donation modal. Set API_BASE to your deployed backend HTTPS origin. */
 (() => {
-  const DEMO_MODE = true; // Frontend-only simulation. No payments are processed or details sent.
   const API_BASE = 'https://YOUR-BACKEND-HOST';
   const markup = `
   <div id="agcf-give-modal" hidden aria-hidden="true">
@@ -15,23 +14,10 @@
           </div><label for="agcf-amount">Or enter another amount</label><div class="agcf-amount-input"><span>KSh</span><input id="agcf-amount" name="amount" type="number" min="10" max="1000000" step="1" placeholder="e.g. 1500" required></div></fieldset>
           <div><label for="agcf-purpose">Where would you like your donation to go?</label><select id="agcf-purpose" name="purpose" required><option value="General Giving">General Giving</option><option value="Orphans and Widows">Orphans and Widows</option><option value="Education Support">Education Support</option><option value="Disaster Relief">Disaster Relief</option><option value="Church Ministry">Church Ministry</option></select></div>
           <div class="agcf-form-grid"><div><label for="agcf-name">Your name (optional)</label><input id="agcf-name" name="name" autocomplete="name" maxlength="100" placeholder="Full name"></div><div><label for="agcf-email">Email (optional)</label><input id="agcf-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></div></div>
-          <fieldset class="agcf-method-fieldset"><legend>Choose payment method</legend>
-            <label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="mpesa" checked><span><strong>M-Pesa</strong><small>Open the M-Pesa details below.</small></span></label>
-            <div class="agcf-method-panel" id="agcf-mpesa-panel">
-              <label for="agcf-phone">M-Pesa phone number</label>
-              <input id="agcf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678" required>
-              <p class="agcf-field-hint">In live mode, this number would receive an M-Pesa payment prompt.</p>
-            </div>
-            <label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="card"><span><strong>Debit or credit card</strong><small>Open the card details below.</small></span></label>
-            <div class="agcf-method-panel" id="agcf-card-panel" hidden>
-              <div class="agcf-demo-warning"><strong>Demo only:</strong> Do not enter real card details. This mock form does not charge a card and does not send or store these entries.</div>
-              <label for="agcf-card-name">Name on card</label><input id="agcf-card-name" name="cardName" autocomplete="off" placeholder="Demo cardholder" disabled>
-              <label for="agcf-card-number">Card number</label><input id="agcf-card-number" name="cardNumber" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242" maxlength="23" disabled>
-              <div class="agcf-form-grid agcf-card-grid"><div><label for="agcf-card-expiry">Expiry date</label><input id="agcf-card-expiry" name="cardExpiry" autocomplete="off" placeholder="MM/YY" maxlength="5" disabled></div><div><label for="agcf-card-cvv">CVV</label><input id="agcf-card-cvv" name="cardCvv" inputmode="numeric" autocomplete="off" placeholder="123" maxlength="4" disabled></div></div>
-            </div>
-          </fieldset>
-          <p class="agcf-security-note">🔒 This is a frontend demonstration. No money will be moved. Never share your M-Pesa PIN with anyone.</p>
-          <button id="agcf-submit" class="agcf-submit" type="submit">Simulate donation</button><p id="agcf-message" class="agcf-message" role="status" aria-live="polite"></p>
+          <div><label for="agcf-phone">M-Pesa phone number <span class="agcf-muted">(required for M-Pesa)</span></label><input id="agcf-phone" name="phone" type="tel" autocomplete="tel" placeholder="07XX XXX XXX"></div>
+          <fieldset><legend>Choose payment method</legend><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="mpesa" checked><span><strong>M-Pesa</strong><small>Receive a payment prompt on your phone.</small></span></label><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="card"><span><strong>Debit or credit card</strong><small>Continue to the secure card provider checkout.</small></span></label></fieldset>
+          <p class="agcf-security-note">🔒 Card details are entered only on the payment provider's secure checkout. Never share your M-Pesa PIN with anyone.</p>
+          <button id="agcf-submit" class="agcf-submit" type="submit">Continue to secure payment</button><p id="agcf-message" class="agcf-message" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -74,91 +60,36 @@
   amountInput.addEventListener('input', () => modal.querySelectorAll('.agcf-amount-option').forEach(item => item.classList.toggle('active', Number(item.dataset.amount) === Number(amountInput.value))));
 
   function showMessage(text, kind = '') { message.textContent = text; message.className = `agcf-message ${kind}`; }
-
-  const methodPanels = {
-    mpesa: modal.querySelector('#agcf-mpesa-panel'),
-    card: modal.querySelector('#agcf-card-panel')
-  };
-  const phoneInput = modal.querySelector('#agcf-phone');
-  const cardInputs = [...modal.querySelectorAll('#agcf-card-name, #agcf-card-number, #agcf-card-expiry, #agcf-card-cvv')];
-  const methodRadios = [...modal.querySelectorAll('input[name="paymentMethod"]')];
-
-  function updatePaymentPanel() {
-    const selected = form.querySelector('input[name="paymentMethod"]:checked')?.value || 'mpesa';
-    methodPanels.mpesa.hidden = selected !== 'mpesa';
-    methodPanels.card.hidden = selected !== 'card';
-    phoneInput.required = selected === 'mpesa';
-    phoneInput.disabled = selected !== 'mpesa';
-    cardInputs.forEach(input => {
-      input.disabled = selected !== 'card';
-      input.required = selected === 'card';
-    });
-    submitButton.textContent = DEMO_MODE ? 'Simulate donation' : 'Continue to secure payment';
-    showMessage('');
+  async function apiRequest(path, options = {}) {
+    const response = await fetch(`${API_BASE}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || 'The request failed. Please try again.');
+    return data;
   }
-  methodRadios.forEach(radio => radio.addEventListener('change', updatePaymentPanel));
-
-  // Demo-only formatting helpers. Values are never sent to a server or stored.
-  const cardNumberInput = modal.querySelector('#agcf-card-number');
-  cardNumberInput.addEventListener('input', () => {
-    const digits = cardNumberInput.value.replace(/\D/g, '').slice(0, 19);
-    cardNumberInput.value = digits.replace(/(.{4})/g, '$1 ').trim();
-  });
-  const expiryInput = modal.querySelector('#agcf-card-expiry');
-  expiryInput.addEventListener('input', () => {
-    const digits = expiryInput.value.replace(/\D/g, '').slice(0, 4);
-    expiryInput.value = digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits;
-  });
-  modal.querySelector('#agcf-card-cvv').addEventListener('input', event => {
-    event.target.value = event.target.value.replace(/\D/g, '').slice(0, 4);
-  });
-
+  function configureMessage() {
+    if (API_BASE.includes('YOUR-BACKEND-HOST')) { showMessage('The donation system is not configured yet. Set API_BASE in give-modal.js to your deployed backend URL.', 'error'); return false; }
+    return true;
+  }
   form.addEventListener('submit', async event => {
-    event.preventDefault();
-    showMessage('');
-    const data = new FormData(form);
-    const amount = Number(data.get('amount'));
-    const paymentMethod = data.get('paymentMethod');
-    if (!Number.isInteger(amount) || amount < 10 || amount > 1000000) {
-      showMessage('Enter a whole-number donation between KSh 10 and KSh 1,000,000.', 'error');
-      return;
-    }
-    if (paymentMethod === 'mpesa') {
-      const phone = String(data.get('phone') || '').replace(/[\s-]/g, '');
-      if (!/^(?:254|0)?7\d{8}$/.test(phone)) {
-        showMessage('Enter a valid Kenyan M-Pesa number, for example 0712345678.', 'error');
-        phoneInput.focus();
-        return;
+    event.preventDefault(); showMessage('');
+    if (!configureMessage()) return;
+    const data = new FormData(form); const amount = Number(data.get('amount')); const paymentMethod = data.get('paymentMethod');
+    if (!Number.isInteger(amount) || amount < 10 || amount > 1000000) { showMessage('Enter a whole-number donation between KSh 10 and KSh 1,000,000.', 'error'); return; }
+    if (paymentMethod === 'mpesa' && !String(data.get('phone') || '').trim()) { showMessage('Enter the M-Pesa phone number that should receive the payment prompt.', 'error'); return; }
+    submitButton.disabled = true; submitButton.textContent = 'Connecting securely…';
+    try {
+      const created = await apiRequest('/api/donations', { method:'POST', body:JSON.stringify({ amount, purpose:data.get('purpose'), name:data.get('name'), email:data.get('email'), phone:data.get('phone'), paymentMethod }) });
+      if (paymentMethod === 'mpesa') {
+        await apiRequest(`/api/donations/${encodeURIComponent(created.donationId)}/mpesa`, { method:'POST', body:JSON.stringify({}) });
+        sessionStorage.setItem('agcfPendingDonation', created.donationId);
+        showMessage('Payment prompt requested. Check your phone, confirm the amount and enter your M-Pesa PIN. Keep this window open while we check the result.', 'success');
+        submitButton.textContent = 'Waiting for M-Pesa confirmation…'; await pollMpesa(created.donationId);
+      } else {
+        const checkout = await apiRequest(`/api/donations/${encodeURIComponent(created.donationId)}/card`, { method:'POST', body:JSON.stringify({}) });
+        window.location.assign(checkout.redirectUrl);
       }
-    } else {
-      const cardName = String(data.get('cardName') || '').trim();
-      const cardNumber = String(data.get('cardNumber') || '').replace(/\s/g, '');
-      const expiry = String(data.get('cardExpiry') || '').trim();
-      const cvv = String(data.get('cardCvv') || '').trim();
-      if (!cardName || !/^\d{12,19}$/.test(cardNumber) || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry) || !/^\d{3,4}$/.test(cvv)) {
-        showMessage('For this visual demo, fill in the sample card fields using test-only values. Do not use a real card.', 'error');
-        return;
-      }
-    }
-
-    if (DEMO_MODE) {
-      // Intentionally do not call fetch(), store card details, or send form values anywhere.
-      submitButton.disabled = true;
-      submitButton.textContent = 'Simulating…';
-      window.setTimeout(() => {
-        const methodName = paymentMethod === 'mpesa' ? 'M-Pesa' : 'debit/credit card';
-        showMessage(`DEMO SUCCESS: KSh ${amount.toLocaleString()} paid successfully using ${methodName}. No money was charged; this is only a test message.`, 'success');
-        returnStatus.hidden = false;
-        returnStatus.textContent = `Demo receipt: KSh ${amount.toLocaleString()} · ${data.get('purpose')} · Status: SIMULATED (not a real payment).`;
-        submitButton.disabled = false;
-        submitButton.textContent = 'Simulate another donation';
-      }, 650);
-      return;
-    }
-
-    showMessage('Live payment integration has not been enabled yet.', 'error');
+    } catch (error) { showMessage(error.message, 'error'); submitButton.disabled = false; submitButton.textContent = 'Continue to secure payment'; }
   });
-  updatePaymentPanel();
 
   async function pollMpesa(donationId) {
     for (let i=0; i<36; i++) {
@@ -173,7 +104,6 @@
   }
 
   async function handleProviderReturn() {
-    if (DEMO_MODE) return;
     const params = new URLSearchParams(window.location.search); const donationId = params.get('donationId'); const payment = params.get('payment'); const trackingId = params.get('OrderTrackingId');
     if (payment === 'cancelled') { openModal(); showMessage('The card checkout was cancelled. No successful payment has been confirmed.', ''); history.replaceState({}, '', location.pathname); return; }
     if (!donationId || payment !== 'card') return;
