@@ -172,8 +172,10 @@ function renderHeader() {
                         <!-- GIVE -->
 
                         <a
-                            href="give.html"
+                            href="#give"
                             class="give-btn"
+                            data-open-give-modal
+                            aria-haspopup="dialog"
                         >
                             Give
                         </a>
@@ -239,8 +241,10 @@ function renderHeader() {
 
 
                     <a
-                        href="give.html"
-                        class="mobile-give"
+                        href="#give"
+                        class="mobile-give give-btn"
+                        data-open-give-modal
+                        aria-haspopup="dialog"
                     >
                         Give
                     </a>
@@ -583,9 +587,13 @@ function renderFooter() {
 
                     <div class="footer-logo">
 
-                        <div class="footer-logo-symbol">
-                            ✝
-                        </div>
+                 
+<div class="footer-logo-symbol">
+    <img
+        src="logo.jpg"
+        alt="Amazing Grace Family Care Foundation logo"
+    >
+</div>
 
 
                         <div>
@@ -687,7 +695,7 @@ function renderFooter() {
                         Sermons
                     </a>
 
-                    <a href="events.html">
+                    <a href="events.html" style="display:none">
                         Events
                     </a>
 
@@ -830,6 +838,31 @@ function renderFooter() {
 
 
 /* =========================================================
+   DONATION MODAL LOADER
+   Loads the shared donation modal on every page that uses
+   components.js, without adding duplicate script instances.
+   Keep give-modal.js and give-modal.css beside this file.
+   ========================================================= */
+function ensureGiveModalLoaded() {
+    const componentsScript = Array.from(document.scripts).find(script => /(?:^|\/)components\.js(?:[?#].*)?$/.test(script.getAttribute("src") || ""));
+    const componentsBase = componentsScript && componentsScript.src ? componentsScript.src : window.location.href;
+    const alreadyLoaded = Array.from(document.scripts).some(script => {
+        const src = script.getAttribute("src") || "";
+        return /(?:^|\/)give-modal\.js(?:[?#].*)?$/.test(src);
+    });
+
+    if (alreadyLoaded || document.querySelector("[data-agfc-give-modal-loader]")) {
+        return;
+    }
+
+    const script = document.createElement("script");
+    script.src = new URL("give-modal.js", componentsBase).href;
+    script.defer = true;
+    script.dataset.agfcGiveModalLoader = "true";
+    document.body.appendChild(script);
+}
+
+/* =========================================================
    INITIALIZE
    ========================================================= */
 
@@ -842,6 +875,8 @@ document.addEventListener(
         renderFooter();
 
         setupTheme();
+
+        ensureGiveModalLoaded();
 
     }
 );

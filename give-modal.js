@@ -1,6 +1,5 @@
-/* AGCF donation modal. Set API_BASE to your deployed backend HTTPS origin. */
+/* AGCF donation modal — FRONT-END DEMO ONLY. No real payments are processed. */
 (() => {
-  const API_BASE = 'https://YOUR-BACKEND-HOST';
   const markup = `
   <div id="agcf-give-modal" hidden aria-hidden="true">
     <div class="agcf-modal-backdrop" data-agcf-close="true"></div>
@@ -15,15 +14,31 @@
           <div><label for="agcf-purpose">Where would you like your donation to go?</label><select id="agcf-purpose" name="purpose" required><option value="General Giving">General Giving</option><option value="Orphans and Widows">Orphans and Widows</option><option value="Education Support">Education Support</option><option value="Disaster Relief">Disaster Relief</option><option value="Church Ministry">Church Ministry</option></select></div>
           <div class="agcf-form-grid"><div><label for="agcf-name">Your name (optional)</label><input id="agcf-name" name="name" autocomplete="name" maxlength="100" placeholder="Full name"></div><div><label for="agcf-email">Email (optional)</label><input id="agcf-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></div></div>
           <div><label for="agcf-phone">M-Pesa phone number <span class="agcf-muted">(required for M-Pesa)</span></label><input id="agcf-phone" name="phone" type="tel" autocomplete="tel" placeholder="07XX XXX XXX"></div>
-          <fieldset><legend>Choose payment method</legend><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="mpesa" checked><span><strong>M-Pesa</strong><small>Receive a payment prompt on your phone.</small></span></label><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="card"><span><strong>Debit or credit card</strong><small>Continue to the secure card provider checkout.</small></span></label></fieldset>
-          <p class="agcf-security-note">🔒 Card details are entered only on the payment provider's secure checkout. Never share your M-Pesa PIN with anyone.</p>
-          <button id="agcf-submit" class="agcf-submit" type="submit">Continue to secure payment</button><p id="agcf-message" class="agcf-message" role="status" aria-live="polite"></p>
+          <fieldset><legend>Choose payment method</legend><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="mpesa" checked><span><strong>M-Pesa</strong><small>Enter a phone number to simulate an M-Pesa prompt.</small></span></label><label class="agcf-payment-choice"><input type="radio" name="paymentMethod" value="card"><span><strong>Debit or credit card</strong><small>Enter sample card details to test the checkout layout.</small></span></label></fieldset>
+          <section id="agcf-mpesa-fields" class="agcf-method-fields" aria-label="M-Pesa details">
+            <h3>M-Pesa details</h3>
+            <label for="agcf-phone-entry">Phone number</label>
+            <input id="agcf-phone-entry" name="mpesaPhone" type="tel" inputmode="tel" autocomplete="off" placeholder="0712 345 678" pattern="[+0-9 ()-]{9,16}" />
+            <p class="agcf-field-hint">Demo mode: no real STK push will be sent.</p>
+          </section>
+          <section id="agcf-card-fields" class="agcf-method-fields" aria-label="Debit or credit card details" hidden>
+            <h3>Debit or credit card</h3>
+            <p class="agcf-demo-warning">Testing only — use the sample values shown below. Do not enter real card details.</p>
+            <label for="agcf-card-name">Name on card</label><input id="agcf-card-name" name="cardName" autocomplete="off" placeholder="TEST USER" />
+            <label for="agcf-card-number">Card number</label><input id="agcf-card-number" name="cardNumber" inputmode="numeric" autocomplete="off" maxlength="19" placeholder="4242 4242 4242 4242" />
+            <div class="agcf-card-row"><div><label for="agcf-card-expiry">Expiry date</label><input id="agcf-card-expiry" name="cardExpiry" autocomplete="off" maxlength="5" placeholder="12/30" /></div><div><label for="agcf-card-cvv">CVV</label><input id="agcf-card-cvv" name="cardCvv" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="123" /></div></div>
+            <p class="agcf-field-hint">Sample card: 4242 4242 4242 4242 · expiry 12/30 · CVV 123</p>
+          </section>
+          <p class="agcf-security-note">This is a front-end simulation. It does not contact M-Pesa, a bank, or a payment provider, and no money is charged.</p>
+          <button id="agcf-submit" class="agcf-submit" type="submit">Simulate donation</button><p id="agcf-message" class="agcf-message" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </div>`;
 
-  const cssUrl = new URL('give-modal.css', document.currentScript?.src || window.location.href).href;
+  const thisScript = document.currentScript;
+  const scriptBase = thisScript && thisScript.src ? thisScript.src : new URL('give-modal.js', window.location.href).href;
+  const cssUrl = new URL('give-modal.css', scriptBase).href;
   if (!document.querySelector('link[data-agcf-modal-css]')) {
     const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = cssUrl; link.dataset.agcfModalCss = 'true'; document.head.appendChild(link);
   }
@@ -35,7 +50,6 @@
   const submitButton = document.querySelector('#agcf-submit');
   const returnStatus = document.querySelector('#agcf-return-status');
   let lastFocus = null;
-  let pollTimer = null;
 
   function openModal() {
     lastFocus = document.activeElement;
@@ -59,67 +73,65 @@
   }));
   amountInput.addEventListener('input', () => modal.querySelectorAll('.agcf-amount-option').forEach(item => item.classList.toggle('active', Number(item.dataset.amount) === Number(amountInput.value))));
 
+  const mpesaFields = document.querySelector('#agcf-mpesa-fields');
+  const cardFields = document.querySelector('#agcf-card-fields');
+  const paymentRadios = [...form.querySelectorAll('input[name="paymentMethod"]')];
+  const phoneEntry = document.querySelector('#agcf-phone-entry');
+  const cardName = document.querySelector('#agcf-card-name');
+  const cardNumber = document.querySelector('#agcf-card-number');
+  const cardExpiry = document.querySelector('#agcf-card-expiry');
+  const cardCvv = document.querySelector('#agcf-card-cvv');
+
+  function selectedMethod() { return form.querySelector('input[name="paymentMethod"]:checked')?.value || 'mpesa'; }
+  function updatePaymentFields() {
+    const method = selectedMethod();
+    mpesaFields.hidden = method !== 'mpesa';
+    cardFields.hidden = method !== 'card';
+    phoneEntry.required = method === 'mpesa';
+    cardName.required = cardNumber.required = cardExpiry.required = cardCvv.required = method === 'card';
+    submitButton.textContent = method === 'mpesa' ? 'Simulate M-Pesa payment' : 'Simulate card payment';
+    showMessage('');
+  }
+  paymentRadios.forEach(radio => radio.addEventListener('change', updatePaymentFields));
+  updatePaymentFields();
+  cardNumber.addEventListener('input', () => {
+    const digits = cardNumber.value.replace(/\D/g, '').slice(0, 16);
+    cardNumber.value = digits.replace(/(.{4})/g, '$1 ').trim();
+  });
+  cardExpiry.addEventListener('input', () => {
+    const digits = cardExpiry.value.replace(/\D/g, '').slice(0, 4);
+    cardExpiry.value = digits.length > 2 ? digits.slice(0, 2) + '/' + digits.slice(2) : digits;
+  });
   function showMessage(text, kind = '') { message.textContent = text; message.className = `agcf-message ${kind}`; }
-  async function apiRequest(path, options = {}) {
-    const response = await fetch(`${API_BASE}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(data.error || 'The request failed. Please try again.');
-    return data;
-  }
-  function configureMessage() {
-    if (API_BASE.includes('YOUR-BACKEND-HOST')) { showMessage('The donation system is not configured yet. Set API_BASE in give-modal.js to your deployed backend URL.', 'error'); return false; }
-    return true;
-  }
+
   form.addEventListener('submit', async event => {
-    event.preventDefault(); showMessage('');
-    if (!configureMessage()) return;
-    const data = new FormData(form); const amount = Number(data.get('amount')); const paymentMethod = data.get('paymentMethod');
-    if (!Number.isInteger(amount) || amount < 10 || amount > 1000000) { showMessage('Enter a whole-number donation between KSh 10 and KSh 1,000,000.', 'error'); return; }
-    if (paymentMethod === 'mpesa' && !String(data.get('phone') || '').trim()) { showMessage('Enter the M-Pesa phone number that should receive the payment prompt.', 'error'); return; }
-    submitButton.disabled = true; submitButton.textContent = 'Connecting securely…';
-    try {
-      const created = await apiRequest('/api/donations', { method:'POST', body:JSON.stringify({ amount, purpose:data.get('purpose'), name:data.get('name'), email:data.get('email'), phone:data.get('phone'), paymentMethod }) });
-      if (paymentMethod === 'mpesa') {
-        await apiRequest(`/api/donations/${encodeURIComponent(created.donationId)}/mpesa`, { method:'POST', body:JSON.stringify({}) });
-        sessionStorage.setItem('agcfPendingDonation', created.donationId);
-        showMessage('Payment prompt requested. Check your phone, confirm the amount and enter your M-Pesa PIN. Keep this window open while we check the result.', 'success');
-        submitButton.textContent = 'Waiting for M-Pesa confirmation…'; await pollMpesa(created.donationId);
-      } else {
-        const checkout = await apiRequest(`/api/donations/${encodeURIComponent(created.donationId)}/card`, { method:'POST', body:JSON.stringify({}) });
-        window.location.assign(checkout.redirectUrl);
+    event.preventDefault();
+    showMessage('');
+    const amount = Number(amountInput.value);
+    if (!Number.isInteger(amount) || amount < 10 || amount > 1000000) {
+      showMessage('Enter a whole-number donation between KSh 10 and KSh 1,000,000.', 'error'); return;
+    }
+    const method = selectedMethod();
+    if (method === 'mpesa') {
+      const phone = phoneEntry.value.trim();
+      if (!/^(?:\+?254|0)?[17]\d{8}$/.test(phone.replace(/[ ()-]/g, ''))) {
+        showMessage('Enter a valid Kenyan test phone number, for example 0712345678.', 'error'); phoneEntry.focus(); return;
       }
-    } catch (error) { showMessage(error.message, 'error'); submitButton.disabled = false; submitButton.textContent = 'Continue to secure payment'; }
+    } else {
+      const digits = cardNumber.value.replace(/\D/g, '');
+      if (cardName.value.trim().length < 2 || digits !== '4242424242424242' || !/^\d{2}\/\d{2}$/.test(cardExpiry.value) || !/^\d{3,4}$/.test(cardCvv.value)) {
+        showMessage('For this demo, use TEST USER, card 4242 4242 4242 4242, expiry 12/30 and CVV 123.', 'error'); return;
+      }
+    }
+    submitButton.disabled = true;
+    submitButton.textContent = 'Processing demo…';
+    await new Promise(resolve => setTimeout(resolve, 700));
+    const receipt = 'DEMO-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+    const methodLabel = method === 'mpesa' ? 'M-Pesa' : 'card';
+    showMessage(`TEST PAYMENT SUCCESSFUL — KSh ${amount.toLocaleString()} paid successfully via ${methodLabel}. Demo receipt: ${receipt}. No money was charged.`, 'success');
+    submitButton.disabled = false;
+    submitButton.textContent = 'Simulate another payment';
   });
 
-  async function pollMpesa(donationId) {
-    for (let i=0; i<36; i++) {
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      try {
-        const status = await apiRequest(`/api/donations/${encodeURIComponent(donationId)}/status`);
-        if (status.status === 'paid') { showMessage(`Thank you. Your donation of KSh ${Number(status.amount_kes).toLocaleString()} has been confirmed.${status.provider_reference ? ` Receipt: ${status.provider_reference}.` : ''}`, 'success'); sessionStorage.removeItem('agcfPendingDonation'); submitButton.textContent = 'Donation confirmed'; return; }
-        if (['failed','cancelled','reversed'].includes(status.status)) { showMessage(`The payment status is ${status.status}. If money was deducted, contact the foundation before trying again.`, 'error'); submitButton.disabled = false; submitButton.textContent = 'Try another donation'; return; }
-      } catch { /* transient polling failure: retry */ }
-    }
-    showMessage('Confirmation has not arrived yet. This does not mean payment failed. Please check again later and avoid paying twice.', ''); submitButton.disabled = false; submitButton.textContent = 'Try again later';
-  }
-
-  async function handleProviderReturn() {
-    const params = new URLSearchParams(window.location.search); const donationId = params.get('donationId'); const payment = params.get('payment'); const trackingId = params.get('OrderTrackingId');
-    if (payment === 'cancelled') { openModal(); showMessage('The card checkout was cancelled. No successful payment has been confirmed.', ''); history.replaceState({}, '', location.pathname); return; }
-    if (!donationId || payment !== 'card') return;
-    openModal(); returnStatus.hidden = false; returnStatus.textContent = 'Checking your payment with the payment provider…';
-    try {
-      for (let i=0; i<8; i++) {
-        const suffix = trackingId ? `?OrderTrackingId=${encodeURIComponent(trackingId)}` : '';
-        const status = await apiRequest(`/api/donations/${encodeURIComponent(donationId)}/status${suffix}`);
-        if (status.status === 'paid') { returnStatus.textContent = `Thank you. Your donation of KSh ${Number(status.amount_kes).toLocaleString()} has been verified.${status.provider_reference ? ` Reference: ${status.provider_reference}.` : ''}`; break; }
-        if (['failed','reversed','cancelled'].includes(status.status)) { returnStatus.textContent = `The provider reports status: ${status.status}. If your account was charged, contact the foundation before retrying.`; break; }
-        await new Promise(resolve => setTimeout(resolve, 3000));
-      }
-    } catch (error) { returnStatus.textContent = `We could not verify the payment right now. Please try again later. ${error.message}`; }
-    history.replaceState({}, '', location.pathname);
-  }
-  handleProviderReturn();
-  const pending = sessionStorage.getItem('agcfPendingDonation');
-  if (pending) { /* A refresh can happen while a provider callback is still pending. */ }
+  // Provider-return handling will be added when the backend is integrated.
 })();

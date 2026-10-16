@@ -92,3 +92,12 @@ body.dark-mode #agcf-give-modal {
 body.agcf-modal-open { overflow:hidden; }
 @media(max-width:520px) { #agcf-give-modal { padding:10px; align-items:flex-end; } #agcf-give-modal .agcf-modal-panel { max-height:94vh; border-radius:18px 18px 10px 10px; } #agcf-give-modal .agcf-modal-head,#agcf-give-modal .agcf-modal-body { padding-left:17px; padding-right:17px; } #agcf-give-modal .agcf-form-grid { grid-template-columns:1fr; } #agcf-give-modal .agcf-amount-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(prefers-reduced-motion:no-preference) { #agcf-give-modal .agcf-modal-panel { animation:agcf-modal-in .18s ease-out; } @keyframes agcf-modal-in { from { opacity:0; transform:translateY(10px) scale(.99); } to { opacity:1; transform:translateY(0) scale(1); } } }
+
+/* Expandable payment method panels for the front-end demo */
+#agcf-give-modal .agcf-method-fields { border:1px solid var(--agcf-modal-border); border-radius:12px; padding:15px; background:var(--agcf-modal-surface); display:grid; gap:9px; }
+#agcf-give-modal .agcf-method-fields[hidden] { display:none !important; }
+#agcf-give-modal .agcf-method-fields h3 { margin:0 0 2px; font-size:1rem; color:var(--agcf-modal-text); }
+#agcf-give-modal .agcf-field-hint { margin:0; font-size:.82rem; color:var(--agcf-modal-muted); }
+#agcf-give-modal .agcf-demo-warning { margin:0 0 4px; font-size:.84rem; color:var(--agcf-modal-error); }
+#agcf-give-modal .agcf-card-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+#agcf-give-modal .agcf-card-row > div { min-width:0; }
