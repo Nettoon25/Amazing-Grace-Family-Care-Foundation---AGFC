@@ -6842,3 +6842,387 @@ body.dark-theme .contact-info .section-label {
         margin-top: 0 !important;
     }
 }
+
+
+
+/* =========================================================
+   AGFC SERMONS PAGE — RESPONSIVE WIDTH CORRECTION
+   ========================================================= */
+
+/* Predictable sizing across the entire page */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent accidental horizontal overflow */
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: clip;
+}
+
+/* Keep major page sections within the viewport */
+main,
+main section,
+.story-section,
+.services-section,
+.about-intro {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Consistent container sizing */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(16px, 4vw, 32px);
+    padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* =========================================================
+   FEATURED SERMON — VIDEO AND BACKGROUND
+   ========================================================= */
+
+.story-grid,
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(20px, 4vw, 48px);
+    width: 100%;
+    min-width: 0;
+}
+
+.sermon-video,
+.video-frame,
+.video-placeholder,
+.sermon-content,
+.about-intro-content,
+.story-image {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Maintain the featured video background's exact width */
+.video-frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    background-color: #171717;
+}
+
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #171717;
+}
+
+.video-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Keep the play icon and label inside the video frame */
+.video-play-icon,
+.video-placeholder > span {
+    position: absolute;
+    z-index: 1;
+}
+
+/* =========================================================
+   SERMON CARD GRID
+   ========================================================= */
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    width: 100%;
+    min-width: 0;
+    align-items: stretch;
+}
+
+.sermon-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+/* Thumbnail wrapper and its background */
+.sermon-card-image {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #171717;
+}
+
+/* Thumbnail and video occupy precisely the same frame */
+.sermon-card-image .sermon-thumbnail,
+.sermon-card-image .sermon-video-player {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    border: 0;
+}
+
+/* Preserve video playback controls */
+.sermon-card-image .sermon-video-player {
+    z-index: 2;
+}
+
+/* Keep the play button inside the thumbnail */
+.sermon-card-image .sermon-play {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: calc(100% - 24px);
+}
+
+/* Text must never force a card wider than its column */
+.sermon-card-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    flex: 1;
+}
+
+.sermon-card-content h3,
+.sermon-card-content p,
+.sermon-card-content a {
+    max-width: 100%;
+}
+
+/* Prevent images from exceeding their containers */
+.story-image img,
+.about-intro img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .sermon-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .story-grid,
+    .about-intro-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sermon-video {
+        width: 100%;
+    }
+
+    .sermon-content {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE PHONES
+   ========================================================= */
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* One column: each card uses the full available width */
+    .sermon-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .sermon-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    /* Lock the image and background to the card width */
+    .sermon-card-image {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+    }
+
+    .sermon-card-image .sermon-thumbnail,
+    .sermon-card-image .sermon-video-player {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .sermon-card-content {
+        width: 100%;
+        min-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Featured video stays aligned with the sermon cards */
+    .story-grid,
+    .about-intro-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sermon-video,
+    .video-frame,
+    .video-placeholder {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .video-frame {
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+    }
+
+    .video-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Stop long words or links from expanding the layout */
+    .sermon-card-content h3,
+    .sermon-card-content p,
+    .sermon-card-content a,
+    .sermon-content h2,
+    .sermon-content p {
+        overflow-wrap: anywhere;
+    }
+
+    /* Keep section headings within the viewport */
+    .section-heading,
+    .section-heading h2,
+    .section-heading p {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .sermon-grid {
+        gap: 18px;
+    }
+
+    .sermon-card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .video-frame,
+    .sermon-card-image {
+        border-radius: 10px;
+    }
+}
+
+
+/* Restore sermon thumbnails */
+.sermon-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #171717;
+}
+
+.sermon-card-image img.sermon-thumbnail {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* Keep the video hidden until playback is requested */
+.sermon-card-image video.sermon-video-player {
+    display: none;
+}
+
+/* Show the player only when explicitly activated */
+.sermon-card-image.is-playing video.sermon-video-player {
+    display: block;
+    z-index: 4;
+}
+
+.sermon-card-image.is-playing img.sermon-thumbnail,
+.sermon-card-image.is-playing .sermon-play {
+    display: none;
+}
