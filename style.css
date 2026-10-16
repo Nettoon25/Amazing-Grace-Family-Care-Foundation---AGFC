@@ -7579,3 +7579,78 @@ body.dark-theme .footer-logo span {
 .site-footer .footer-bottom {
     border-top: none !important;
 }
+
+/* =========================================
+   FOOTER CONTACT — RESPONSIVE LAYOUT
+========================================= */
+
+.footer-contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 18px;
+    padding-top: 26px;
+    text-align: center;
+}
+
+.footer-contact-section h3 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.footer-contact-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px 32px;
+}
+
+.footer-contact-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.footer-contact-item a {
+    overflow-wrap: anywhere;
+}
+
+/* Smaller laptops and tablets */
+@media (max-width: 900px) {
+    .footer-contact-items {
+        flex-wrap: wrap;
+        gap: 14px 24px;
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+    .footer-contact-section {
+        gap: 14px;
+        padding-top: 22px;
+    }
+
+    .footer-contact-items {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .footer-contact-item {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
