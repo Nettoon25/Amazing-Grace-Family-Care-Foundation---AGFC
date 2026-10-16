@@ -571,202 +571,110 @@ function renderFooter() {
     }
 
 
-    footer.innerHTML = `
+footer.innerHTML = `
+    <footer class="site-footer">
 
-        <footer class="site-footer">
+        <div class="container footer-container">
 
+            <!-- ROW 1: LOGO AND SOCIAL MEDIA -->
+            <div class="footer-brand-row">
 
-            <div class="container footer-grid">
+                <a href="index.html" class="footer-logo"
+                   aria-label="${churchInfo.name} home">
 
+                    <div class="footer-logo-symbol">
+                        <img
+                            src="logo.jpg"
+                            alt="${churchInfo.name} logo"
+                        >
+                    </div>
 
-                <!-- ABOUT -->
+                    <div class="footer-logo-text">
+                        <strong>${churchInfo.shortName}</strong>
+                        <span>Faith • Hope • Love</span>
+                    </div>
 
-                <div class="footer-column footer-about">
+                </a>
 
-                    <div class="footer-logo">
+                <div class="social-links" aria-label="Social media">
 
-                 
-<div class="footer-logo-symbol">
-    <img
-        src="logo.jpg"
-        alt="Amazing Grace Family Care Foundation logo"
-    >
+                    <a
+                        href="${churchInfo.facebook}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                    >
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                            alt=""
+                        >
+                    </a>
+
+                    <a
+                        href="${churchInfo.instagram}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                            alt=""
+                        >
+                    </a>
+
+                    <a
+                        href="${churchInfo.youtube}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                    >
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                            alt=""
+                        >
+                    </a>
+
+                </div>
+
+            </div>
+
+           
+<!-- ROW 3: CONTACT US -->
+<div class="footer-contact-section">
+
+    <h3>Contact Us</h3>
+
+    <div class="footer-contact-items">
+
+        <p class="footer-contact-item">
+            <span class="footer-contact-icon" aria-hidden="true">📍</span>
+            <span>${churchInfo.address}</span>
+        </p>
+
+        <p class="footer-contact-item">
+            <span class="footer-contact-icon" aria-hidden="true">📞</span>
+            <a href="tel:${churchInfo.phone}">
+                ${churchInfo.phone}
+            </a>
+        </p>
+
+        <p class="footer-contact-item">
+            <span class="footer-contact-icon" aria-hidden="true">✉</span>
+            <a href="mailto:${churchInfo.email}">
+                ${churchInfo.email}
+            </a>
+        </p>
+
+    </div>
+
 </div>
 
+     
 
-                        <div>
-
-                            <strong>
-                                ${churchInfo.shortName}
-                            </strong>
-
-                            <span>
-                                Faith • Hope • Love
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="social-links">
-   <!-- Facebook -->
-    <a
-        href="${churchInfo.facebook}"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-    >
-        <img
-            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
-            alt="Facebook"
-        />
-    </a>
-
-
-
-                 <!-- Instagram -->
-    <a
-        href="${churchInfo.instagram}"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-    >
-        <img
-            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-            alt="Instagram"
-        />
-    </a>
-
-
-  <!-- YouTube -->
-    <a
-        href="${churchInfo.youtube}"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="YouTube"
-    >
-        <img
-            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
-            alt="YouTube"
-        />
-    </a>
-
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- QUICK LINKS -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        Quick Links
-                    </h3>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="about.html">
-                        About Us
-                    </a>
-
-                    <a href="ministries.html">
-                        Ministries
-                    </a>
-
-                    <a href="sermons.html">
-                        Sermons
-                    </a>
-
-
-                    <a href="gallery.html">
-                        Gallery
-                    </a>
-
-                    <a href="contact.html">
-                        Contact
-                    </a>
-
-                </div>
-
-                <!-- CONTACT -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        Contact Us
-                    </h3>
-
-
-                    <p>
-                        📍 ${churchInfo.address}
-                    </p>
-
-
-                    <p>
-
-                        📞
-
-                        <a
-                            href="tel:${churchInfo.phone}"
-                        >
-                            ${churchInfo.phone}
-                        </a>
-
-                    </p>
-
-
-                    <p>
-
-                        ✉
-
-                        <a
-                            href="mailto:${churchInfo.email}"
-                        >
-                            ${churchInfo.email}
-                        </a>
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FOOTER BOTTOM -->
-
-            <div class="footer-bottom">
-
-                <div class="container footer-bottom-inner">
-
-                    <p>
-
-                        © ${new Date().getFullYear()}
-
-                        ${churchInfo.name}.
-
-                        All Rights Reserved.
-
-                    </p>
-
-
-                </div>
-
-            </div>
-
-
-        </footer>
-
-    `;
+    </footer>
+`;
 
 }
-
-
 
 /* =========================================================
    DONATION MODAL LOADER
