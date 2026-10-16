@@ -91,9 +91,9 @@
 
                     <div class="contact-info">
 
-                        <span class="section-label">
-                            CONTACT US
-                        </span>
+                     <div class="contact-info">
+    <span class="section-label">CONTACT US</span>
+</div>
 
                         <h2>
                             Let's Connect
@@ -216,11 +216,9 @@
                          CONTACT FORM
                     ====================================== -->
 
-                    <div class="contact-form-wrapper">
+                   <div class="contact-form-wrapper">
+    <span class="section-label">SEND A MESSAGE</span>
 
-                        <span class="section-label">
-                            SEND A MESSAGE
-                        </span>
 
                         <h2>
                             Get In Touch
@@ -416,36 +414,108 @@
     <script src="components.js"></script>
 
 
+    
+<!-- CONTACT SUCCESS MODAL -->
+<div class="contact-success-overlay" id="contactSuccessModal"
+     aria-hidden="true">
+
+    <div class="contact-success-modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="contactSuccessTitle"
+         aria-describedby="contactSuccessMessage">
+
+        <div class="contact-success-icon" aria-hidden="true">
+            ✓
+        </div>
+
+        <h2 id="contactSuccessTitle">Message Received!</h2>
+
+        <p id="contactSuccessMessage">
+            Thank you for contacting us. Your message has been received.
+            We appreciate you reaching out to AGFC.
+        </p>
+
+        <button type="button" id="contactSuccessOk">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+
+
     <!-- =====================================================
          CONTACT FORM
     ====================================================== -->
 
     <script>
 
-        const contactForm =
-            document.getElementById("contactForm");
+      
+const contactForm = document.getElementById("contactForm");
+const successModal = document.getElementById("contactSuccessModal");
+const successOkButton = document.getElementById("contactSuccessOk");
 
+if (contactForm && successModal && successOkButton) {
+    let lastFocusedElement = null;
 
-        if (contactForm) {
+    function openSuccessModal() {
+        lastFocusedElement = document.activeElement;
 
-            contactForm.addEventListener(
-                "submit",
-                function (event) {
+        successModal.classList.add("is-visible");
+        successModal.setAttribute("aria-hidden", "false");
 
-                    event.preventDefault();
+        document.body.style.overflow = "hidden";
 
+        successOkButton.focus();
+    }
 
-                    alert(
-                        "Thank you for contacting us. Your message has been received."
-                    );
+    function closeSuccessModal() {
+        successModal.classList.remove("is-visible");
+        successModal.setAttribute("aria-hidden", "true");
 
+        document.body.style.overflow = "";
 
-                    contactForm.reset();
-
-                }
-            );
-
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
         }
+    }
+
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Show the confirmation popup.
+        openSuccessModal();
+
+        // Reset the form after the visitor confirms with OK.
+    });
+
+    successOkButton.addEventListener("click", function () {
+        closeSuccessModal();
+        contactForm.reset();
+    });
+
+    // Allow the visitor to dismiss the popup by clicking outside it.
+    successModal.addEventListener("click", function (event) {
+        if (event.target === successModal) {
+            closeSuccessModal();
+            contactForm.reset();
+        }
+    });
+
+    // Allow Escape to close the popup.
+    document.addEventListener("keydown", function (event) {
+        if (
+            event.key === "Escape" &&
+            successModal.classList.contains("is-visible")
+        ) {
+            closeSuccessModal();
+            contactForm.reset();
+        }
+    });
+}
+
 
     </script>
 

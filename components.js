@@ -227,9 +227,7 @@ function renderHeader() {
                         Sermons
                     </a>
 
-                    <a href="events.html">
-                        Events
-                    </a>
+          
 
                     <a href="gallery.html">
                         Gallery
@@ -610,17 +608,6 @@ function renderFooter() {
 
                     </div>
 
-
-                    <p>
-
-                        A place where people come
-                        together to worship God,
-                        grow in faith and serve
-                        the community.
-
-                    </p>
-
-
                     <div class="social-links">
    <!-- Facebook -->
     <a
@@ -695,9 +682,6 @@ function renderFooter() {
                         Sermons
                     </a>
 
-                    <a href="events.html" style="display:none">
-                        Events
-                    </a>
 
                     <a href="gallery.html">
                         Gallery
@@ -708,59 +692,6 @@ function renderFooter() {
                     </a>
 
                 </div>
-
-
-
-                <!-- SERVICES -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        Service Times
-                    </h3>
-
-
-                    <div class="service-item">
-
-                        <strong>
-                            Sunday
-                        </strong>
-
-                        <span>
-                            ${churchInfo.serviceTimes.sunday}
-                        </span>
-
-                    </div>
-
-
-                    <div class="service-item">
-
-                        <strong>
-                            Midweek Service
-                        </strong>
-
-                        <span>
-                            ${churchInfo.serviceTimes.midweek}
-                        </span>
-
-                    </div>
-
-
-                    <div class="service-item">
-
-                        <strong>
-                            Youth Fellowship
-                        </strong>
-
-                        <span>
-                            ${churchInfo.serviceTimes.youth}
-                        </span>
-
-                    </div>
-
-                </div>
-
-
 
                 <!-- CONTACT -->
 
