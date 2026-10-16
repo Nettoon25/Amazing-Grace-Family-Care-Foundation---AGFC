@@ -4743,6 +4743,155 @@ h6 {
 }
 
 
+
+/* =========================================
+   CONTACT SUCCESS POPUP MODAL
+========================================= */
+
+.contact-success-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(12, 18, 35, 0.68);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.contact-success-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.contact-success-modal {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    box-sizing: border-box;
+
+    padding: 36px 30px 30px;
+    border-radius: 20px;
+
+    background: #ffffff;
+    color: #172033;
+    text-align: center;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.contact-success-overlay.is-visible .contact-success-modal {
+    transform: translateY(0) scale(1);
+}
+
+.contact-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+    background: #e7f7ee;
+    color: #16834a;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.contact-success-modal h2 {
+    margin: 0 0 12px;
+    color: #172033;
+    font-size: 25px;
+    line-height: 1.3;
+}
+
+.contact-success-modal p {
+    margin: 0 0 26px;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+#contactSuccessOk {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 125px;
+    min-height: 46px;
+    padding: 12px 28px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #2457e6;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#contactSuccessOk:hover {
+    background: #1744c4;
+    transform: translateY(-2px);
+}
+
+#contactSuccessOk:focus-visible {
+    outline: 3px solid #ff8b35;
+    outline-offset: 4px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .contact-success-modal {
+        max-width: 360px;
+        padding: 30px 22px 24px;
+        border-radius: 16px;
+    }
+
+    .contact-success-modal h2 {
+        font-size: 22px;
+    }
+
+    .contact-success-modal p {
+        font-size: 14px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .contact-success-overlay,
+    .contact-success-modal,
+    #contactSuccessOk {
+        transition: none;
+    }
+}
+
+
 /* ---------------------------------------------------------
    FOOTER
 --------------------------------------------------------- */
@@ -4759,6 +4908,7 @@ background-color: #000000;
 .footer-logo strong {
     font-family: var(--font-heading);
     font-weight: 700;
+        color: #A0008D !important;
 }
 
 .footer-logo span {
@@ -6425,4 +6575,270 @@ body.dark-theme .sermon-card-content a {
 .footer-column:has(> a[href="index.html"]) a {
     display: inline-block;
     margin: 0;
+}
+
+
+/* =====================================================
+   FOOTER LOGO — MATCH HEADER SIZE AND BRANDING
+   ===================================================== */
+
+/* Match the header logo dimensions */
+.footer-logo-symbol {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+}
+
+/* Match the header image appearance */
+.footer-logo-symbol img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Match the header's AGFC title size */
+.footer-logo strong {
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+
+/* Match the header tagline size and spacing */
+.footer-logo span {
+    display: block;
+    margin-top: 3px;
+    color: var(--accent-light);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+
+
+/* =====================================================
+   FOOTER LOGO TITLE AND TAGLINE — MATCH HEADER COLORS
+   ===================================================== */
+
+/* Light mode */
+.footer-logo strong,
+.footer-logo span {
+    color: blue !important;
+}
+
+.footer-logo span {
+    font-style: normal;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .footer-logo strong,
+body[data-theme="dark"] .footer-logo strong,
+html.dark-theme .footer-logo strong,
+body.dark-theme .footer-logo strong,
+html[data-theme="dark"] .footer-logo span,
+body[data-theme="dark"] .footer-logo span,
+html.dark-theme .footer-logo span,
+body.dark-theme .footer-logo span {
+    color: #FB923C !important;
+}
+
+
+
+/* =========================================
+   FOOTER LOGO TITLE AND TAGLINE COLORS
+   ========================================= */
+
+/* Light mode */
+.footer-logo strong {
+    color: #A0008D !important;
+}
+
+.footer-logo span {
+    color: blue !important;
+    font-style: normal;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .footer-logo strong,
+body[data-theme="dark"] .footer-logo strong,
+html.dark-theme .footer-logo strong,
+body.dark-theme .footer-logo strong {
+    color: #A0008D !important;
+}
+
+html[data-theme="dark"] .footer-logo span,
+body[data-theme="dark"] .footer-logo span,
+html.dark-theme .footer-logo span,
+body.dark-theme .footer-logo span {
+    color: #FB923C !important;
+}
+
+
+
+/* =========================================
+   AGFC CONTACT SUCCESS MODAL
+   Light and Dark Theme Support
+========================================= */
+
+/* LIGHT MODE — Default */
+.contact-success-overlay {
+    --modal-bg: #ffffff;
+    --modal-text: #172033;
+    --modal-muted: #667085;
+    --modal-border: #e5e7eb;
+    --modal-icon-bg: #e7f7ee;
+    --modal-icon-color: #16834a;
+    --modal-button-bg: var(--primary, #0f62fe);
+    --modal-button-hover: #084dbb;
+    --modal-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+    background: rgba(12, 18, 35, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.contact-success-modal {
+    background: var(--modal-bg);
+    color: var(--modal-text);
+    border: 1px solid var(--modal-border);
+    box-shadow: var(--modal-shadow);
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.contact-success-modal h2 {
+    color: var(--modal-text);
+}
+
+.contact-success-modal p {
+    color: var(--modal-muted);
+}
+
+.contact-success-icon {
+    background: var(--modal-icon-bg);
+    color: var(--modal-icon-color);
+}
+
+#contactSuccessOk {
+    background: var(--modal-button-bg);
+    color: #ffffff;
+}
+
+#contactSuccessOk:hover {
+    background: var(--modal-button-hover);
+}
+
+/* =========================================
+   DARK MODE
+   Support both theme systems used by AGFC
+========================================= */
+
+[data-theme="dark"] .contact-success-overlay,
+.dark-theme .contact-success-overlay {
+    --modal-bg: #171923;
+    --modal-text: #f5f6fa;
+    --modal-muted: #c2c7d0;
+    --modal-border: #343847;
+    --modal-icon-bg: #173b2b;
+    --modal-icon-color: #7ce0a6;
+    --modal-button-bg: var(--primary, #0f62fe);
+    --modal-button-hover: #3b82f6;
+    --modal-shadow: 0 25px 80px rgba(0, 0, 0, 0.55);
+
+    background: rgba(0, 0, 0, 0.78);
+}
+
+[data-theme="dark"] .contact-success-modal,
+.dark-theme .contact-success-modal {
+    background: var(--modal-bg);
+    color: var(--modal-text);
+    border-color: var(--modal-border);
+}
+
+[data-theme="dark"] .contact-success-modal h2,
+.dark-theme .contact-success-modal h2 {
+    color: var(--modal-text);
+}
+
+[data-theme="dark"] .contact-success-modal p,
+.dark-theme .contact-success-modal p {
+    color: var(--modal-muted);
+}
+
+[data-theme="dark"] .contact-success-icon,
+.dark-theme .contact-success-icon {
+    background: var(--modal-icon-bg);
+    color: var(--modal-icon-color);
+}
+
+[data-theme="dark"] #contactSuccessOk,
+.dark-theme #contactSuccessOk {
+    background: var(--modal-button-bg);
+    color: #ffffff;
+}
+
+[data-theme="dark"] #contactSuccessOk:hover,
+.dark-theme #contactSuccessOk:hover {
+    background: var(--modal-button-hover);
+}
+
+/* Keep keyboard focus clearly visible in either theme */
+#contactSuccessOk:focus-visible {
+    outline: 3px solid var(--agfc-yellow, #ffb52e);
+    outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .contact-success-modal {
+        transition: none;
+    }
+
+    #contactSuccessOk {
+        transition: none;
+    }
+}
+
+/* Both contact labels — same color in light and dark mode */
+.contact-info .section-label,
+.contact-form-wrapper .section-label {
+    color: blue !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .contact-info .section-label,
+body[data-theme="dark"] .contact-info .section-label,
+html.dark-theme .contact-info .section-label,
+body.dark-theme .contact-info .section-label {
+    color: #FB923C !important;
+}
+
+/* Reduce the space above the founder's story on mobile */
+@media (max-width: 768px) {
+    .story-content {
+        padding-top: 0 !important;
+    }
+
+    .story-content .section-label {
+        margin-top: 0 !important;
+    }
 }
