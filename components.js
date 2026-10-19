@@ -104,7 +104,7 @@ function renderHeader() {
                 </strong>
 
                 <span>
-                    Faith • Hope • Love
+                Hate • Hope • Love
                 </span>
 
             </div>
