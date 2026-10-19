@@ -7713,16 +7713,57 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
 }
 
 
+/* =========================================================
+   MOBILE HEADER — FINAL OVERRIDE
+   Logo LEFT | Hamburger RIGHT | NO HEADER GIVE BUTTON
+   ========================================================= */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
-    #site-header .give-btn:not(.mobile-give) {
+    /* Header container */
+    #site-header .site-header,
+    #site-header .header-container,
+    #site-header .navbar,
+    #site-header header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative;
+        width: 100%;
+    }
+
+    /* Hide Give buttons in the HEADER only */
+    #site-header .give-btn:not(.mobile-give),
+    #site-header .nav-action .give-btn,
+    #site-header a[href="#give"]:not(.mobile-give),
+    #site-header [data-open-give-modal]:not(.mobile-give) {
         display: none !important;
     }
 
-    #site-header .mobile-menu-btn {
-        display: flex;
-        margin-left: auto;
+    /* Keep logo at the top left */
+    #site-header .brand,
+    #site-header .logo,
+    #site-header .site-logo {
+        margin-right: auto !important;
+        flex-shrink: 0;
     }
 
+    /* Put hamburger at the far right */
+    #site-header .mobile-menu-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        flex-shrink: 0;
+        order: 10;
+    }
+
+    /* Keep Give available INSIDE the dropdown */
+    #site-header .mobile-menu .mobile-give {
+        display: block !important;
+        width: 100%;
+        margin-top: 12px;
+        text-align: center;
+    }
 }
