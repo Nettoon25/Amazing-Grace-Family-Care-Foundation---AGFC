@@ -480,27 +480,7 @@ body[data-theme="dark"] .theme-toggle-img {
     transition:
         var(--transition);
 
-    box-shadow:
-        0 7px 18px
-        rgba(249, 115, 22, 0.20);
-}
 
-
-.give-btn:hover {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-deep)
-        );
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 20px
-        rgba(15, 98, 254, 0.25);
 }
 
 
@@ -7753,6 +7733,7 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
         width: 100%;
         margin-top: 0px;
         text-align: center;
+        background-color: black;
     }
 }
 

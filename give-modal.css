@@ -1,103 +1,847 @@
-/* AGCF donation modal — follows the main website's light/dark theme. */
-#agcf-give-modal[hidden] { display: none !important; }
+/* ---------------------------------------------------------
+   AGCF DONATION MODAL
+   Follows the main website's light/dark theme.
+   --------------------------------------------------------- */
 
-#agcf-give-modal {
-  --agcf-modal-bg: #ffffff;
-  --agcf-modal-surface: #f8fafc;
-  --agcf-modal-text: #172033;
-  --agcf-modal-muted: #667085;
-  --agcf-modal-border: #e2e8f0;
-  --agcf-modal-field-bg: #ffffff;
-  --agcf-modal-accent: #2563eb;
-  --agcf-modal-accent-hover: #1d4ed8;
-  --agcf-modal-accent-soft: #eff6ff;
-  --agcf-modal-accent-border: #bfdbfe;
-  --agcf-modal-focus: #93c5fd;
-  --agcf-modal-status-bg: #eff6ff;
-  --agcf-modal-status-text: #1e40af;
-  --agcf-modal-error: #b42318;
-  --agcf-modal-success: #166534;
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  font: 16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color: var(--agcf-modal-text);
-  color-scheme: light;
+#agcf-give-modal[hidden] {
+    display: none !important;
 }
 
-/* Recognise common theme selectors used on the foundation website. */
+#agcf-give-modal {
+    --agcf-modal-bg: #ffffff;
+    --agcf-modal-surface: #f8fafc;
+    --agcf-modal-text: #172033;
+    --agcf-modal-muted: #667085;
+    --agcf-modal-border: #e2e8f0;
+    --agcf-modal-field-bg: #ffffff;
+    --agcf-modal-accent:black;
+    --agcf-modal-accent-hover: #1d4ed8;
+    --agcf-modal-accent-soft: #eff6ff;
+    --agcf-modal-accent-border: #bfdbfe;
+    --agcf-modal-focus: #93c5fd;
+    --agcf-modal-status-bg: #eff6ff;
+    --agcf-modal-status-text: #1e40af;
+    --agcf-modal-error: #b42318;
+    --agcf-modal-success: #166534;
+
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    color: black;
+    color-scheme: light;
+}
+
+
+/* ---------------------------------------------------------
+   1. DARK MODE THEME
+   Recognises common theme selectors used on the foundation
+   website.
+   --------------------------------------------------------- */
+
 html[data-theme="dark"] #agcf-give-modal,
 body[data-theme="dark"] #agcf-give-modal,
 html.dark-theme #agcf-give-modal,
 body.dark-theme #agcf-give-modal,
 html.dark-mode #agcf-give-modal,
 body.dark-mode #agcf-give-modal {
-  --agcf-modal-bg: #151923;
-  --agcf-modal-surface: #202633;
-  --agcf-modal-text: #f8fafc;
-  --agcf-modal-muted: #b6c0d0;
-  --agcf-modal-border: #3a4353;
-  --agcf-modal-field-bg: #202633;
-  --agcf-modal-accent: #FB923C;
-  --agcf-modal-accent-hover: #f97316;
-  --agcf-modal-accent-soft: #3a2b20;
-  --agcf-modal-accent-border: #9a5b2c;
-  --agcf-modal-focus: #fdba74;
-  --agcf-modal-status-bg: #30271f;
-  --agcf-modal-status-text: #fed7aa;
-  --agcf-modal-error: #fda29b;
-  --agcf-modal-success: #86efac;
-  color-scheme: dark;
+    --agcf-modal-bg: black;
+    --agcf-modal-surface: #202633;
+    --agcf-modal-text: #f8fafc;
+    --agcf-modal-muted: #b6c0d0;
+    --agcf-modal-border: #3a4353;
+    --agcf-modal-field-bg: #202633;
+    --agcf-modal-accent:  #202633;
+    --agcf-modal-accent-hover: #f97316;
+    --agcf-modal-accent-soft: #3a2b20;
+    --agcf-modal-accent-border: #9a5b2c;
+    --agcf-modal-focus: #fdba74;
+    --agcf-modal-status-bg: #30271f;
+    --agcf-modal-status-text: #fed7aa;
+    --agcf-modal-error: #fda29b;
+    --agcf-modal-success: #86efac;
+
+    color-scheme: dark;
 }
 
-#agcf-give-modal .agcf-modal-backdrop { position: absolute; inset: 0; background: rgba(8,15,30,.68); backdrop-filter: blur(4px); }
-#agcf-give-modal .agcf-modal-panel { position: relative; z-index: 1; width: min(720px, 100%); max-height: min(92vh, 900px); overflow: auto; background: var(--agcf-modal-bg); color: var(--agcf-modal-text); border: 1px solid var(--agcf-modal-border); border-radius: 20px; box-shadow: 0 25px 90px rgba(0,0,0,.3); }
-#agcf-give-modal .agcf-modal-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:22px 24px 12px; border-bottom:1px solid var(--agcf-modal-border); }
-#agcf-give-modal .agcf-modal-head h2 { margin:0; color: var(--agcf-modal-text); font-size:1.45rem; line-height:1.25; }
-#agcf-give-modal .agcf-modal-head p { margin:5px 0 0; color:var(--agcf-modal-muted); font-size:.92rem; }
-#agcf-give-modal .agcf-modal-close { flex:0 0 auto; width:40px; height:40px; border:1px solid var(--agcf-modal-border); border-radius:50%; background:var(--agcf-modal-surface); color:var(--agcf-modal-text); font-size:26px; cursor:pointer; line-height:1; }
-#agcf-give-modal .agcf-modal-close:hover { background:var(--agcf-modal-accent-soft); }
-#agcf-give-modal .agcf-modal-body { padding:20px 24px 24px; }
-#agcf-give-modal form { display:grid; gap:15px; }
-#agcf-give-modal fieldset { border:0; padding:0; margin:0; min-width:0; }
-#agcf-give-modal legend,#agcf-give-modal label { display:block; color:var(--agcf-modal-text); font-size:.92rem; font-weight:700; margin-bottom:7px; }
-#agcf-give-modal input:not([type=radio]),#agcf-give-modal select { width:100%; min-height:46px; padding:10px 12px; border:1px solid var(--agcf-modal-border); border-radius:10px; background:var(--agcf-modal-field-bg); color:var(--agcf-modal-text); font:inherit; }
-#agcf-give-modal input::placeholder { color:var(--agcf-modal-muted); opacity:.85; }
-#agcf-give-modal input:focus,#agcf-give-modal select:focus,#agcf-give-modal button:focus-visible { outline:3px solid var(--agcf-modal-focus); outline-offset:2px; }
-#agcf-give-modal .agcf-amount-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:12px; }
-#agcf-give-modal .agcf-amount-option { padding:10px 4px; border:1px solid var(--agcf-modal-border); border-radius:10px; background:var(--agcf-modal-surface); color:var(--agcf-modal-text); font:inherit; font-weight:750; cursor:pointer; }
-#agcf-give-modal .agcf-amount-option:hover,#agcf-give-modal .agcf-amount-option.active { border-color:var(--agcf-modal-accent); background:var(--agcf-modal-accent-soft); color:var(--agcf-modal-accent); }
-#agcf-give-modal .agcf-amount-input { display:flex; align-items:center; gap:10px; }
-#agcf-give-modal .agcf-amount-input span { font-weight:750; color:var(--agcf-modal-muted); }
-#agcf-give-modal .agcf-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-#agcf-give-modal .agcf-payment-choice { display:flex; align-items:flex-start; gap:11px; padding:12px; border:1px solid var(--agcf-modal-border); border-radius:11px; margin:0 0 8px; background:var(--agcf-modal-surface); cursor:pointer; }
-#agcf-give-modal .agcf-payment-choice:has(input:checked) { border-color:var(--agcf-modal-accent); background:var(--agcf-modal-accent-soft); }
-#agcf-give-modal .agcf-payment-choice input { width:18px; height:18px; margin-top:3px; flex:0 0 auto; accent-color:var(--agcf-modal-accent); }
-#agcf-give-modal .agcf-payment-choice span { display:grid; gap:2px; }
-#agcf-give-modal .agcf-payment-choice small,#agcf-give-modal .agcf-muted { color:var(--agcf-modal-muted); font-weight:400; }
-#agcf-give-modal .agcf-security-note { color:var(--agcf-modal-muted); font-size:.83rem; margin:0; }
-#agcf-give-modal .agcf-submit { width:100%; border:0; border-radius:11px; padding:13px 18px; background:var(--agcf-modal-accent); color:#fff; font:inherit; font-weight:800; cursor:pointer; transition:background .15s ease, transform .15s ease; }
-#agcf-give-modal .agcf-submit:hover { background:var(--agcf-modal-accent-hover); }
-#agcf-give-modal .agcf-submit:active { transform:translateY(1px); }
-#agcf-give-modal .agcf-submit:disabled { opacity:.6; cursor:wait; }
-#agcf-give-modal .agcf-message { min-height:1.2em; margin:0; color:var(--agcf-modal-text); font-size:.9rem; overflow-wrap:anywhere; }
-#agcf-give-modal .agcf-message.error { color:var(--agcf-modal-error); }
-#agcf-give-modal .agcf-message.success { color:var(--agcf-modal-success); }
-#agcf-give-modal .agcf-status { padding:12px; border:1px solid var(--agcf-modal-accent-border); border-radius:10px; background:var(--agcf-modal-status-bg); color:var(--agcf-modal-status-text); margin-bottom:14px; overflow-wrap:anywhere; }
-#agcf-give-modal .agcf-status[hidden] { display:none; }
-body.agcf-modal-open { overflow:hidden; }
-@media(max-width:520px) { #agcf-give-modal { padding:10px; align-items:flex-end; } #agcf-give-modal .agcf-modal-panel { max-height:94vh; border-radius:18px 18px 10px 10px; } #agcf-give-modal .agcf-modal-head,#agcf-give-modal .agcf-modal-body { padding-left:17px; padding-right:17px; } #agcf-give-modal .agcf-form-grid { grid-template-columns:1fr; } #agcf-give-modal .agcf-amount-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(prefers-reduced-motion:no-preference) { #agcf-give-modal .agcf-modal-panel { animation:agcf-modal-in .18s ease-out; } @keyframes agcf-modal-in { from { opacity:0; transform:translateY(10px) scale(.99); } to { opacity:1; transform:translateY(0) scale(1); } } }
 
-/* Expandable payment method panels for the front-end demo */
-#agcf-give-modal .agcf-method-fields { border:1px solid var(--agcf-modal-border); border-radius:12px; padding:15px; background:var(--agcf-modal-surface); display:grid; gap:9px; }
-#agcf-give-modal .agcf-method-fields[hidden] { display:none !important; }
-#agcf-give-modal .agcf-method-fields h3 { margin:0 0 2px; font-size:1rem; color:var(--agcf-modal-text); }
-#agcf-give-modal .agcf-field-hint { margin:0; font-size:.82rem; color:var(--agcf-modal-muted); }
-#agcf-give-modal .agcf-demo-warning { margin:0 0 4px; font-size:.84rem; color:var(--agcf-modal-error); }
-#agcf-give-modal .agcf-card-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-#agcf-give-modal .agcf-card-row > div { min-width:0; }
+/* ---------------------------------------------------------
+   2. MODAL BACKDROP
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(8, 15, 30, 0.68);
+    backdrop-filter: blur(4px);
+}
+
+
+/* ---------------------------------------------------------
+   3. MODAL PANEL
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-modal-panel {
+    position: relative;
+    z-index: 1;
+
+    width: min(720px, 100%);
+    max-height: min(92vh, 900px);
+
+    overflow: auto;
+
+    background: var(--agcf-modal-bg);
+    color: var(--agcf-modal-text);
+
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 20px;
+
+    box-shadow: 0 25px 90px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---------------------------------------------------------
+   4. MODAL HEADER
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+    padding: 22px 24px 12px;
+
+    border-bottom: 1px solid var(--agcf-modal-border);
+}
+
+#agcf-give-modal .agcf-modal-head h2 {
+    margin: 0;
+
+    color: var(--agcf-modal-text);
+
+    font-size: 1.45rem;
+    line-height: 1.25;
+}
+
+#agcf-give-modal .agcf-modal-head p {
+    margin: 5px 0 0;
+
+    color: var(--agcf-modal-muted);
+
+    font-size: 0.92rem;
+}
+
+#agcf-give-modal .agcf-modal-close {
+    flex: 0 0 auto;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 50%;
+
+    background: var(--agcf-modal-surface);
+    color: var(--agcf-modal-text);
+
+    font-size: 26px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+#agcf-give-modal .agcf-modal-close:hover {
+    background: var(--agcf-modal-accent-soft);
+}
+
+
+/* ---------------------------------------------------------
+   5. MODAL BODY AND FORM LAYOUT
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-modal-body {
+    padding: 20px 24px 24px;
+}
+
+#agcf-give-modal form {
+    display: grid;
+    gap: 15px;
+}
+
+#agcf-give-modal fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    min-width: 0;
+}
+
+#agcf-give-modal legend,
+#agcf-give-modal label {
+    display: block;
+
+    color: var(--agcf-modal-text);
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+
+/* ---------------------------------------------------------
+   6. FORM INPUTS AND SELECT MENUS
+   --------------------------------------------------------- */
+
+#agcf-give-modal input:not([type=radio]),
+#agcf-give-modal select {
+    width: 100%;
+    min-height: 46px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 10px;
+
+    background: var(--agcf-modal-field-bg);
+    color: var(--agcf-modal-text);
+
+    font: inherit;
+}
+
+#agcf-give-modal input::placeholder {
+    color: var(--agcf-modal-muted);
+    opacity: 0.85;
+}
+
+#agcf-give-modal input:focus,
+#agcf-give-modal select:focus,
+#agcf-give-modal button:focus-visible {
+    outline: 3px solid var(--agcf-modal-focus);
+    outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------
+   7. DONATION AMOUNT OPTIONS
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-amount-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+#agcf-give-modal .agcf-amount-option {
+    padding: 10px 4px;
+
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 10px;
+
+    background: var(--agcf-modal-surface);
+    color: var(--agcf-modal-text);
+
+    font: inherit;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+#agcf-give-modal .agcf-amount-option:hover,
+#agcf-give-modal .agcf-amount-option.active {
+    border-color: var(--agcf-modal-accent);
+
+    background: var(--agcf-modal-accent-soft);
+    color: var(--agcf-modal-accent);
+}
+
+#agcf-give-modal .agcf-amount-input {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+#agcf-give-modal .agcf-amount-input span {
+    font-weight: 750;
+    color: var(--agcf-modal-muted);
+}
+
+
+/* ---------------------------------------------------------
+   8. FORM GRID
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   9. PAYMENT METHOD OPTIONS
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-payment-choice {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+    padding: 12px;
+
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 11px;
+
+    margin: 0 0 8px;
+
+    background: var(--agcf-modal-surface);
+
+    cursor: pointer;
+}
+
+#agcf-give-modal .agcf-payment-choice:has(input:checked) {
+    border-color: var(--agcf-modal-accent);
+    background: var(--agcf-modal-accent-soft);
+}
+
+#agcf-give-modal .agcf-payment-choice input {
+    width: 18px;
+    height: 18px;
+
+    margin-top: 3px;
+
+    flex: 0 0 auto;
+
+    accent-color: var(--agcf-modal-accent);
+}
+
+#agcf-give-modal .agcf-payment-choice span {
+    display: grid;
+    gap: 2px;
+}
+
+#agcf-give-modal .agcf-payment-choice small,
+#agcf-give-modal .agcf-muted {
+    color: var(--agcf-modal-muted);
+    font-weight: 400;
+}
+
+
+/* ---------------------------------------------------------
+   10. SECURITY NOTE
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-security-note {
+    color: var(--agcf-modal-muted);
+
+    font-size: 0.83rem;
+    margin: 0;
+}
+
+
+/* ---------------------------------------------------------
+   11. SUBMIT BUTTON
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-submit {
+    width: 100%;
+
+    border: 0;
+    border-radius: 11px;
+
+    padding: 13px 18px;
+
+    background: var(--agcf-modal-accent);
+    color: #fff;
+
+    font: inherit;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+#agcf-give-modal .agcf-submit:hover {
+    background: var(--agcf-modal-accent-hover);
+}
+
+#agcf-give-modal .agcf-submit:active {
+    transform: translateY(1px);
+}
+
+#agcf-give-modal .agcf-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* ---------------------------------------------------------
+   12. FORM FEEDBACK MESSAGES
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-message {
+    min-height: 1.2em;
+
+    margin: 0;
+
+    color: var(--agcf-modal-text);
+
+    font-size: 0.9rem;
+
+    overflow-wrap: anywhere;
+}
+
+#agcf-give-modal .agcf-message.error {
+    color: var(--agcf-modal-error);
+}
+
+#agcf-give-modal .agcf-message.success {
+    color: var(--agcf-modal-success);
+}
+
+#agcf-give-modal .agcf-status {
+    padding: 12px;
+
+    border: 1px solid var(--agcf-modal-accent-border);
+    border-radius: 10px;
+
+    background: var(--agcf-modal-status-bg);
+    color: var(--agcf-modal-status-text);
+
+    margin-bottom: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+#agcf-give-modal .agcf-status[hidden] {
+    display: none;
+}
+
+
+/* ---------------------------------------------------------
+   13. PREVENT BACKGROUND SCROLLING
+   --------------------------------------------------------- */
+
+body.agcf-modal-open {
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   14. RESPONSIVE DESIGN
+   --------------------------------------------------------- */
+
+@media (max-width: 520px) {
+    #agcf-give-modal {
+        padding: 10px;
+        align-items: flex-end;
+    }
+
+    #agcf-give-modal .agcf-modal-panel {
+        max-height: 94vh;
+        border-radius: 18px 18px 10px 10px;
+    }
+
+    #agcf-give-modal .agcf-modal-head,
+    #agcf-give-modal .agcf-modal-body {
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    #agcf-give-modal .agcf-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #agcf-give-modal .agcf-amount-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ---------------------------------------------------------
+   15. REDUCED-MOTION ACCESSIBILITY
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+    #agcf-give-modal .agcf-modal-panel {
+        animation: agcf-modal-in 0.18s ease-out;
+    }
+
+    @keyframes agcf-modal-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px) scale(0.99);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+}
+
+
+/* ---------------------------------------------------------
+   16. EXPANDABLE PAYMENT METHOD PANELS
+   For the front-end demo.
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-method-fields {
+    border: 1px solid var(--agcf-modal-border);
+    border-radius: 12px;
+
+    padding: 15px;
+
+    background: var(--agcf-modal-surface);
+
+    display: grid;
+    gap: 9px;
+}
+
+#agcf-give-modal .agcf-method-fields[hidden] {
+    display: none !important;
+}
+
+#agcf-give-modal .agcf-method-fields h3 {
+    margin: 0 0 2px;
+
+    font-size: 1rem;
+    color: var(--agcf-modal-text);
+}
+
+#agcf-give-modal .agcf-field-hint {
+    margin: 0;
+
+    font-size: 0.82rem;
+    color: var(--agcf-modal-muted);
+}
+
+#agcf-give-modal .agcf-demo-warning {
+    margin: 0 0 4px;
+
+    font-size: 0.84rem;
+    color: var(--agcf-modal-error);
+}
+
+
+/* ---------------------------------------------------------
+   17. CARD PAYMENT FIELDS
+   --------------------------------------------------------- */
+
+#agcf-give-modal .agcf-card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+#agcf-give-modal .agcf-card-row > div {
+    min-width: 0;
+}
+
+
+/* DONATION CARD */
+.donation-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    max-height: 85dvh;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* FIXED HEADER */
+.donation-card-header {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 24px 24px 18px;
+
+    background: inherit;
+    z-index: 10;
+}
+
+/* HEADER TEXT */
+.donation-header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.donation-header-text h2 {
+    margin: 0;
+}
+
+.donation-header-text p {
+    margin: 6px 0 0;
+}
+
+/* FIXED CLOSE BUTTON */
+.donation-close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* SCROLLABLE BODY */
+.donation-card-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: 0 24px 24px;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .donation-card {
+        max-height: 90vh;
+        max-height: 90dvh;
+    }
+
+    .donation-card-header {
+        padding: 20px 18px 16px;
+    }
+
+    .donation-card-body {
+        padding: 0 18px 20px;
+    }
+}
+
+
+/* =========================================
+   DONATION CARD LAYOUT
+========================================= */
+
+.donation-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    max-height: 85dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   FIXED DONATION HEADER
+========================================= */
+
+.donation-card-header {
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 24px 24px 18px;
+
+    background: inherit;
+}
+
+
+/* HEADER TEXT */
+
+.donation-header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.donation-header-text h2 {
+    margin: 0;
+}
+
+.donation-header-text p {
+    margin: 6px 0 0;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.donation-close {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    font-size: 30px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SCROLLABLE DONATION CONTENT
+========================================= */
+
+.donation-card-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    padding: 0 24px 24px;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .donation-card {
+        max-height: 90vh;
+        max-height: 90dvh;
+    }
+
+    .donation-card-header {
+        padding: 20px 18px 16px;
+    }
+
+    .donation-card-body {
+        padding: 0 18px 20px;
+    }
+
+}
+
+
+/* =========================================
+   FIX DONATION HEADER AND INTERNAL SCROLLING
+   Place this at the VERY BOTTOM of give.css
+========================================= */
+
+.donation-card {
+    display: flex !important;
+    flex-direction: column !important;
+
+    height: 85vh;
+    height: 85dvh;
+    max-height: 850px;
+
+    min-height: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+}
+
+/* Keep the heading, subtitle and X stationary */
+.donation-card > .donation-card-header {
+    position: relative !important;
+
+    top: auto !important;
+    flex: 0 0 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 24px !important;
+    margin: 0 !important;
+
+    background: inherit;
+    z-index: 20;
+}
+
+/* Keep heading and subtitle together */
+.donation-card .donation-header-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.donation-card .donation-header-text h2 {
+    margin-top: 0;
+}
+
+/* Keep the close button in the header */
+.donation-card .donation-close {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* ONLY this section scrolls */
+.donation-card > .donation-card-body {
+    flex: 1 1 auto !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+    .donation-card {
+        height: 90vh;
+        height: 90dvh;
+    }
+
+    .donation-card > .donation-card-header {
+        padding: 18px !important;
+    }
+
+    .donation-card > .donation-card-body {
+        padding: 0 18px 20px;
+    }
+}
