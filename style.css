@@ -819,7 +819,7 @@ span:nth-child(3) {
 
     gap: 9px;
 
-    margin-top: 12px;
+    margin-top: 0px;
 }
 
 
@@ -7753,3 +7753,17 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
     }
 
 }
+
+
+
+@media screen and (max-width: 768px) {
+
+    #site-header .mobile-menu-btn {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+    }
+
+}
+
