@@ -7775,3 +7775,60 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
 
 }
 
+/* =========================================================
+   MOBILE NAVBAR — FIX HAMBURGER VERTICAL POSITION
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Remove unwanted vertical spacing from the navbar */
+    #site-header .navbar {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Control the actual navigation row */
+    #site-header .navbar .nav-inner {
+        position: relative !important;
+        min-height: 65px !important;
+        height: 65px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Keep the hamburger vertically centered in the navbar */
+    #site-header .navbar .mobile-menu-btn {
+        position: absolute !important;
+        top: 50% !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 42px !important;
+        height: 42px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        flex: none !important;
+        z-index: 1002 !important;
+    }
+
+    /* Preserve the logo's position */
+    #site-header .navbar .church-logo {
+        margin-top: 0 !important;
+        align-self: center !important;
+    }
+
+    /* Keep the dropdown directly below the navigation row */
+    #site-header .navbar .mobile-menu {
+        top: 100% !important;
+        margin-top: 0 !important;
+        transform: none !important;
+    }
+
+}
