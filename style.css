@@ -7679,87 +7679,63 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
 
 
 /* =========================================================
-   MOBILE HEADER ALIGNMENT
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    #site-header {
-        width: 100%;
-    }
-
-    /* Keep logo on the left and menu button on the right */
-    .site-header,
-    .header-container,
-    .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        margin-left: auto;
-        flex-shrink: 0;
-        order: 2;
-    }
-
-    /* Hide the desktop Give button */
-    .site-header .give-btn,
-    .site-header [data-open-give-modal] {
-        display: none !important;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE HEADER — FINAL OVERRIDE
-   Logo LEFT | Hamburger RIGHT | NO HEADER GIVE BUTTON
+   AGFC MOBILE HEADER — CORRECTED LAYOUT
+   Logo left | Hamburger right | Dropdown below header
    ========================================================= */
 
 @media screen and (max-width: 768px) {
 
-    /* Header container */
-    #site-header .site-header,
-    #site-header .header-container,
-    #site-header .navbar,
+    /* Keep the header as the positioning reference */
     #site-header header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
         position: relative;
-        width: 100%;
     }
 
-    /* Hide Give buttons in the HEADER only */
-    #site-header .give-btn:not(.mobile-give),
-    #site-header .nav-action .give-btn,
-    #site-header a[href="#give"]:not(.mobile-give),
-    #site-header [data-open-give-modal]:not(.mobile-give) {
+    /*
+       IMPORTANT:
+       The header's original flex/grid layout should remain intact.
+       Only hide the desktop Give button.
+    */
+
+    #site-header header > nav .give-btn:not(.mobile-give) {
         display: none !important;
     }
 
-    /* Keep logo at the top left */
-    #site-header .brand,
-    #site-header .logo,
-    #site-header .site-logo {
-        margin-right: auto !important;
-        flex-shrink: 0;
-    }
-
-    /* Put hamburger at the far right */
+    /* Hamburger remains on the right */
     #site-header .mobile-menu-btn {
         display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin-left: auto !important;
-        margin-right: 0 !important;
-        flex-shrink: 0;
-        order: 10;
+        flex: 0 0 42px;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        position: relative;
+        z-index: 1002;
     }
 
-    /* Keep Give available INSIDE the dropdown */
+    /*
+       Dropdown is removed from normal document flow.
+       Opening it will not push the logo or page content down.
+    */
+    #site-header .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        z-index: 1001;
+        background: var(--surface);
+        padding: 15px 5%;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    #site-header .mobile-menu.active {
+        display: block !important;
+    }
+
+    /* Give remains available inside the dropdown */
     #site-header .mobile-menu .mobile-give {
         display: block !important;
         width: 100%;
