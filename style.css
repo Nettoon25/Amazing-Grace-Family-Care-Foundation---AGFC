@@ -1347,8 +1347,7 @@ color:black;
 
 .ministry-card {
 
-    background:
-        gainsboro;
+  background-color: #F5F5F5;
 
     border-radius:
         12px;
@@ -5930,6 +5929,7 @@ background-color: #F4F7FA;
     color: var(--ministry-card-link) !important;
 }
 
+
 .ministry-content a:hover {
     color: var(--ministry-card-label) !important;
 }
@@ -5941,7 +5941,7 @@ background-color: #F4F7FA;
    --------------------------------------------------------- */
 
 .ministry-content > span {
-    color: var(--ministry-card-label) !important;
+ color:  #8D0F7B !important;
     font-family: var(--ministry-label-font) !important;
     font-size: var(--ministry-label-size) !important;
     font-weight: var(--ministry-label-weight) !important;
@@ -5950,6 +5950,18 @@ background-color: #F4F7FA;
     text-transform: var(--ministry-label-transform);
 }
 
+/* DARK MODE */
+[data-theme="dark"] .ministry-content > span {
+    color: #FFD700 !important;
+}
+
+.ministry-content a {
+    color: #007BFF !important;
+}
+
+.ministry-content a:hover {
+    color: #0056B3 !important;
+}
 
 /* ---------------------------------------------------------
    9. SMOOTH THEME TRANSITIONS
