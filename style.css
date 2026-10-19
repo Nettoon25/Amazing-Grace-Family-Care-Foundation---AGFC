@@ -7677,33 +7677,52 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
     color: #ffffff !important;
 }
 
-/* =========================================
-   MOBILE HEADER — LOGO LEFT, MENU RIGHT
-========================================= */
+
+/* =========================================================
+   MOBILE HEADER ALIGNMENT
+   ========================================================= */
 
 @media (max-width: 768px) {
 
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    #site-header {
         width: 100%;
     }
 
-    /* Logo stays on the left */
-    .nav-logo,
-    .navbar-logo,
-    .logo {
-        margin-right: auto;
-        flex-shrink: 0;
+    /* Keep logo on the left and menu button on the right */
+    .site-header,
+    .header-container,
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    /* Hamburger moves to the right */
-    .menu-toggle,
-    .hamburger,
-    .mobile-menu-toggle {
+    .mobile-menu-btn {
+        display: flex;
         margin-left: auto;
         flex-shrink: 0;
+        order: 2;
+    }
+
+    /* Hide the desktop Give button */
+    .site-header .give-btn,
+    .site-header [data-open-give-modal] {
+        display: none !important;
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    #site-header .give-btn:not(.mobile-give) {
+        display: none !important;
+    }
+
+    #site-header .mobile-menu-btn {
+        display: flex;
+        margin-left: auto;
     }
 
 }
