@@ -7743,3 +7743,13 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
         text-align: center;
     }
 }
+
+
+@media screen and (max-width: 768px) {
+
+    #site-header .mobile-menu {
+        margin-top: 0 !important;
+        top: 100% !important;
+    }
+
+}
