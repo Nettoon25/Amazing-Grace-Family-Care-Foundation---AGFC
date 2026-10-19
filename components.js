@@ -128,9 +128,11 @@ function renderHeader() {
                          The AGFC Family
                         </a>
 
-                        <a href="sermons.html">
-                            Sermons
-                        </a>
+                     <!--
+<a href="sermons.html">
+    Sermons
+</a>
+-->
 
                 <a href="community-outreach.html">Community Outreach</a>
 
@@ -146,27 +148,26 @@ function renderHeader() {
 
 
 
-                    <!-- DESKTOP ACTIONS -->
+                  <!-- DESKTOP ACTIONS -->
+<div class="nav-action">
 
-                    <div class="nav-action">
+    <!-- THEME TOGGLE -->
+    <button
+        class="theme-toggle"
+        id="theme-toggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        title="Toggle light/dark mode"
+    >
+        <img
+            src="theme.png"
+            id="theme-icon"
+            alt=""
+            class="theme-toggle-img"
+        >
+    </button>
 
-
-                        <!-- THEME TOGGLE -->
-
-                        <button
-                            class="theme-toggle"
-                            id="theme-toggle"
-                            type="button"
-                            aria-label="Switch to dark mode"
-                            title="Toggle light/dark mode"
-                        >
-
-                            <span id="theme-icon">
-                                ☾
-                            </span>
-
-                        </button>
-
+</div>
 
 
                         <!-- GIVE -->
