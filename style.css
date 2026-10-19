@@ -400,6 +400,8 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
+    
+    border-radius: 50%;
 }
 /* =========================================================
    THEME TOGGLE
@@ -432,6 +434,7 @@ img {
     width: 23px;
     height: 23px;
 
+    border-radius: 50%;
     object-fit: contain;
     display: block;
 }
@@ -7672,4 +7675,35 @@ html[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
 body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
 .dark-theme .gallery-media-section h2.gallery-images-title {
     color: #ffffff !important;
+}
+
+/* =========================================
+   MOBILE HEADER — LOGO LEFT, MENU RIGHT
+========================================= */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Logo stays on the left */
+    .nav-logo,
+    .navbar-logo,
+    .logo {
+        margin-right: auto;
+        flex-shrink: 0;
+    }
+
+    /* Hamburger moves to the right */
+    .menu-toggle,
+    .hamburger,
+    .mobile-menu-toggle {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
 }

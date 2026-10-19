@@ -212,31 +212,15 @@ function renderHeader() {
                     id="mobile-menu"
                 >
 
-                    <a href="index.html">
-                        Home
-                    </a>
+                    <a href="index.html">Home</a>
 
-                    <a href="about.html">
-                        About
-                    </a>
+    <a href="about.html">About</a>
 
-                    <a href="ministries.html">
-                        Ministries
-                    </a>
+    <a href="ministries.html">Ministries</a>
 
-                    <a href="sermons.html">
-                        Sermons
-                    </a>
+    <a href="gallery.html">Gallery</a>
 
-          
-
-                    <a href="gallery.html">
-                        Gallery
-                    </a>
-
-                    <a href="contact.html">
-                        Contact
-                    </a>
+    <a href="contact.html">Contact</a>
 
 
                     <a
