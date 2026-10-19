@@ -7739,7 +7739,7 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
     #site-header .mobile-menu .mobile-give {
         display: block !important;
         width: 100%;
-        margin-top: 12px;
+        margin-top: 0px;
         text-align: center;
     }
 }
