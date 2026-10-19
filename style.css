@@ -10,6 +10,13 @@
    LIGHT THEME
    ========================================================= */
 
+   /* Universal box-sizing reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
 
     --primary: #0f62fe;
@@ -24,6 +31,7 @@
 
     --text: black;
     --muted: #667085;
+    font-display: swap;
 
     /* MAIN PAGE BACKGROUND */
     --background: #8D0F7B;
@@ -60,6 +68,23 @@
         --paragraph-color: #f3f4f6;
 
         --paragraph-color: rgba(255, 255, 255, 0.88);
+}
+
+
+@font-face {
+   font-family: "Segoe UI", Arial, sans-serif;
+    src: url("fonts/site-font-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+ font-family: "Segoe UI", Arial, sans-serif;
+    src: url("fonts/site-font-bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* =========================================================
@@ -7824,4 +7849,38 @@ body[data-theme="dark"] .gallery-media-section h2.gallery-images-title,
         transform: none !important;
     }
 
+}
+
+
+/* Reusable subtle hover effect */
+.interactive-card {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .interactive-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgb(0 0 0 / 10%);
+    }
+}
+
+/* Smooth image appearance */
+.image-frame {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.image-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .image-frame:hover img {
+        transform: scale(1.025);
+    }
 }

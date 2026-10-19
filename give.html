@@ -1,399 +1,107 @@
-
 <!doctype html>
 <html lang="en" data-theme="light">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1"
+        content="width=device-width, initial-scale=1.0"
     >
 
     <meta
-        name="description"
-        content="Support the work of Amazing Grace Family Care Foundation."
+        name="theme-color"
+        content="#07152e"
     >
 
-    <title>Give | Amazing Grace Family Care Foundation</title>
+    <title>Embassy of Faith Worldwide</title>
 
-    <link rel="stylesheet" href="give.css">
+    <meta
+        name="description"
+        content="Join Embassy of Faith Worldwide in Nairobi, Kenya. Growing in the Word, grounded in faith, and equipped to impact the world."
+    >
+
+    <!-- Load the main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Preload your main hero image -->
+    <link
+        rel="preload"
+        as="image"
+        href="images/church-hero.webp"
+        fetchpriority="high"
+    >
+
+    <!-- Preload a locally hosted font, if used -->
+    <link
+        rel="preload"
+        href="fonts/site-font.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+    >
+
+    <!-- Run JavaScript without blocking HTML parsing -->
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-
-    <!-- SITE HEADER -->
-    <header class="site-header">
-
-        <a
-            class="brand"
-            href="index.html"
-            aria-label="Amazing Grace Family Care Foundation home"
-        >
-            Amazing Grace
-            <span>Family Care Foundation</span>
-        </a>
-
-        <a class="back-link" href="index.html">
-            ← Back to website
-        </a>
-
-    </header>
-
-
-    <!-- MAIN PAGE CONTENT -->
-    <main class="page-shell">
-
-        <!-- INTRODUCTION -->
-        <section class="intro">
-
-            <span class="eyebrow">
-                GIVE WITH PURPOSE
-            </span>
-
-            <h1>
-                Your generosity can change a life.
-            </h1>
-
-            <p>
-                Your donation helps support vulnerable families,
-                children, education and community outreach.
-                Choose a purpose and a secure payment method below.
-            </p>
-
-        </section>
-
-
-        <!-- DONATION CARD -->
-        <section
-            class="donation-card"
-            aria-labelledby="donation-title"
-        >
-
-            <!-- FIXED DONATION HEADER -->
-            <div class="donation-card-header">
-
-                <div class="donation-header-text">
-
-                    <h2 id="donation-title">
-                        Make a donation
-                    </h2>
-
-                    <p>
-                        Your generosity can change a life
-                    </p>
-
-                </div>
-
-                <!-- CLOSE DONATION MODAL -->
-                <button
-                    type="button"
-                    class="donation-close"
-                    aria-label="Close donation form"
-                    data-close-donation
-                >
-                    &times;
-                </button>
-
-            </div>
-
-
-            <!-- SCROLLABLE DONATION CONTENT -->
-            <div class="donation-card-body">
-
-                <!-- PAYMENT RETURN STATUS -->
-                <div
-                    id="return-status"
-                    class="return-status"
-                    role="status"
-                    aria-live="polite"
-                    hidden
-                ></div>
-
-
-                <!-- DONATION FORM -->
-                <form id="donation-form">
-
-                    <!-- DONATION AMOUNT -->
-                    <fieldset>
-
-                        <legend>
-                            Choose an amount (KES)
-                        </legend>
-
-                        <div class="amount-grid">
-
-                            <button
-                                type="button"
-                                class="amount-option"
-                                data-amount="100"
-                            >
-                                KSh 100
-                            </button>
-
-                            <button
-                                type="button"
-                                class="amount-option"
-                                data-amount="500"
-                            >
-                                KSh 500
-                            </button>
-
-                            <button
-                                type="button"
-                                class="amount-option"
-                                data-amount="1000"
-                            >
-                                KSh 1,000
-                            </button>
-
-                            <button
-                                type="button"
-                                class="amount-option"
-                                data-amount="2000"
-                            >
-                                KSh 2,000
-                            </button>
-
-                        </div>
-
-                        <label for="amount">
-                            Or enter another amount
-                        </label>
-
-                        <div class="amount-input">
-
-                            <span>KSh</span>
-
-                            <input
-                                id="amount"
-                                name="amount"
-                                type="number"
-                                min="10"
-                                max="1000000"
-                                step="1"
-                                placeholder="e.g. 1500"
-                                required
-                            >
-
-                        </div>
-
-                    </fieldset>
-
-
-                    <!-- DONATION PURPOSE -->
-                    <label for="purpose">
-                        Where would you like your donation to go?
-                    </label>
-
-                    <select
-                        id="purpose"
-                        name="purpose"
-                        required
-                    >
-
-                        <option value="General Giving">
-                            General Giving
-                        </option>
-
-                        <option value="Orphans and Widows">
-                            Orphans and Widows
-                        </option>
-
-                        <option value="Education Support">
-                            Education Support
-                        </option>
-
-                        <option value="Disaster Relief">
-                            Disaster Relief
-                        </option>
-
-                        <option value="Church Ministry">
-                            Church Ministry
-                        </option>
-
-                    </select>
-
-
-                    <!-- DONOR DETAILS -->
-                    <div class="form-grid">
-
-                        <div>
-
-                            <label for="name">
-                                Your name (optional)
-                            </label>
-
-                            <input
-                                id="name"
-                                name="name"
-                                autocomplete="name"
-                                maxlength="100"
-                                placeholder="Full name"
-                            >
-
-                        </div>
-
-                        <div>
-
-                            <label for="email">
-                                Email (optional)
-                            </label>
-
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                autocomplete="email"
-                                maxlength="254"
-                                placeholder="you@example.com"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- M-PESA PHONE NUMBER -->
-                    <label for="phone">
-                        M-Pesa phone number
-                        <span class="muted">
-                            (required for M-Pesa)
-                        </span>
-                    </label>
-
-                    <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        autocomplete="tel"
-                        placeholder="07XX XXX XXX"
-                    >
-
-
-                    <!-- PAYMENT METHOD -->
-                    <fieldset>
-
-                        <legend>
-                            Choose payment method
-                        </legend>
-
-                        <label class="payment-choice">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="mpesa"
-                                checked
-                            >
-
-                            <span>
-
-                                <strong>
-                                    M-Pesa
-                                </strong>
-
-                                <small>
-                                    Receive an STK Push prompt
-                                    on your phone.
-                                </small>
-
-                            </span>
-
-                        </label>
-
-
-                        <label class="payment-choice">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="card"
-                            >
-
-                            <span>
-
-                                <strong>
-                                    Debit or credit card
-                                </strong>
-
-                                <small>
-                                    Continue to the secure
-                                    hosted checkout.
-                                </small>
-
-                            </span>
-
-                        </label>
-
-                    </fieldset>
-
-
-                    <!-- PAYMENT SECURITY NOTICE -->
-                    <p class="security-note">
-
-                        <span aria-hidden="true">
-                            🔒
-                        </span>
-
-                        Payment credentials are handled by the
-                        payment providers. Never share your
-                        M-Pesa PIN with anyone.
-
-                    </p>
-
-
-                    <!-- SUBMIT DONATION -->
-                    <button
-                        id="submit-button"
-                        class="submit-button"
-                        type="submit"
-                    >
-                        Continue to secure payment
-                    </button>
-
-
-                    <!-- FORM STATUS MESSAGE -->
-                    <p
-                        id="form-message"
-                        class="form-message"
-                        role="status"
-                        aria-live="polite"
-                    ></p>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- DONATION DISCLAIMER -->
-        <p class="disclaimer">
-
-            Payments are confirmed only after the payment
-            provider verifies the transaction. If you need
-            help with a donation, contact the foundation
-            using the contact details published on our
-            official website.
-
-        </p>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        © <span id="year"></span>
-        Amazing Grace Family Care Foundation
-
-    </footer>
-
-
-    <!-- JAVASCRIPT -->
-    <script src="give.js" defer></script>
-
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Amazing Grace Family Care Foundation home">Amazing Grace <span>Family Care Foundation</span></a>
+    <a class="back-link" href="index.html">← Back to website</a>
+  </header>
+  <main class="page-shell">
+    <section class="intro">
+      <span class="eyebrow">GIVE WITH PURPOSE</span>
+      <h1>Your generosity can change a life.</h1>
+      <p>Your donation helps support vulnerable families, children, education and community outreach. Choose a purpose and a secure payment method below.</p>
+    </section>
+
+    <section class="donation-card" aria-labelledby="donation-title">
+      <div id="return-status" class="return-status" role="status" aria-live="polite" hidden></div>
+      <h2 id="donation-title">Make a donation</h2>
+      <form id="donation-form">
+        <fieldset>
+          <legend>Choose an amount (KES)</legend>
+          <div class="amount-grid">
+            <button type="button" class="amount-option" data-amount="100">KSh 100</button>
+            <button type="button" class="amount-option" data-amount="500">KSh 500</button>
+            <button type="button" class="amount-option" data-amount="1000">KSh 1,000</button>
+            <button type="button" class="amount-option" data-amount="2000">KSh 2,000</button>
+          </div>
+          <label for="amount">Or enter another amount</label>
+          <div class="amount-input"><span>KSh</span><input id="amount" name="amount" type="number" min="10" max="1000000" step="1" placeholder="e.g. 1500" required></div>
+        </fieldset>
+
+        <label for="purpose">Where would you like your donation to go?</label>
+        <select id="purpose" name="purpose" required>
+          <option value="General Giving">General Giving</option>
+          <option value="Orphans and Widows">Orphans and Widows</option>
+          <option value="Education Support">Education Support</option>
+          <option value="Disaster Relief">Disaster Relief</option>
+          <option value="Church Ministry">Church Ministry</option>
+        </select>
+
+        <div class="form-grid">
+          <div><label for="name">Your name (optional)</label><input id="name" name="name" autocomplete="name" maxlength="100" placeholder="Full name"></div>
+          <div><label for="email">Email (optional)</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></div>
+        </div>
+        <label for="phone">M-Pesa phone number <span class="muted">(required for M-Pesa)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07XX XXX XXX">
+
+        <fieldset>
+          <legend>Choose payment method</legend>
+          <label class="payment-choice"><input type="radio" name="paymentMethod" value="mpesa" checked><span><strong>M-Pesa</strong><small>Receive an STK Push prompt on your phone.</small></span></label>
+          <label class="payment-choice"><input type="radio" name="paymentMethod" value="card"><span><strong>Debit or credit card</strong><small>Continue to the secure hosted checkout.</small></span></label>
+        </fieldset>
+        <p class="security-note"><span aria-hidden="true">🔒</span> Payment credentials are handled by the payment providers. Never share your M-Pesa PIN with anyone.</p>
+        <button id="submit-button" class="submit-button" type="submit">Continue to secure payment</button>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <p class="disclaimer">Payments are confirmed only after the payment provider verifies the transaction. If you need help with a donation, contact the foundation using the contact details published on our official website.</p>
+  </main>
+  <footer>© <span id="year"></span> Amazing Grace Family Care Foundation</footer>
+  <script src="give.js" defer></script>
 </body>
-
 </html>
